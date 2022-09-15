@@ -13,7 +13,7 @@ public class L4_8_EnumAsClass {
 		System.out.println(months[1]);
 		System.out.println(jan.ordinal());
 		System.out.println(months[1].ordinal());
-
+		
 	}
 
 	static class Month {
