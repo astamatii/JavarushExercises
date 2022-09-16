@@ -111,10 +111,11 @@ public class L2_ArrayListUses {
 		System.out.println("__________________");
 		names = Arrays.asList("John", "Sara", "Jack");
 		names = new ArrayList(names);
-		Predicate predicate = (obj) -> obj.equals("John"); // PREDICATE (LIKE DELEGATE FUNCTION FOR ONE ELEMENT IN COLLECTION)
+		Predicate predicate = (obj) -> obj.equals("John"); // PREDICATE (LIKE DELEGATE FUNCTION FOR ONE ELEMENT IN
+															// COLLECTION)
 		names.removeIf(predicate); // DELETE "John"
 		names.forEach(consumer);
-		
+
 		// Let`s code THIS
 		System.out.println("__________________");
 		names = Arrays.asList("John", "Sara", "Jack");
@@ -122,25 +123,26 @@ public class L2_ArrayListUses {
 		iterator = names.iterator();
 		iterator.next(); // Курсор на John
 		while (iterator.hasNext()) {
-		    iterator.next(); // Следующий элемент
-		    iterator.remove(); // Удалили его
+			iterator.next(); // Следующий элемент
+			iterator.remove(); // Удалили его
 		}
 		System.out.println(names);
-		
+
 		// OR with LAMBDA EXPR
 		names = Arrays.asList("John", "Sara", "Jack");
 		names = new ArrayList(names);
 		Iterator<String> iterato = names.iterator();
 		iterato.next(); // Курсор на John
-		//iterato.forEachRemaining(obj -> iterato.remove()); // - THIS WON`T WORK BECAUSE OF Java 8 problem. It is SOLVED in Java 9.
+		// iterato.forEachRemaining(obj -> iterato.remove()); // - THIS WON`T WORK
+		// BECAUSE OF Java 8 problem. It is SOLVED in Java 9.
 		System.out.println(names);
-		
+
 		// OR using STREAM API:
 		System.out.println("__________________\nUsing Stream API:");
 		names = new ArrayList(Arrays.asList("John", "Sara", "Jack"));
 		Stream<String> stream = names.stream();
 		stream.forEach(obj -> System.out.println(obj));
-		
+
 	}
 
 }

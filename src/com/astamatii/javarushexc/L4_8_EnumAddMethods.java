@@ -7,8 +7,8 @@ public class L4_8_EnumAddMethods {
 		System.out.println(getNextMonth(Month.JULY));
 		System.out.println(getNextMonth(Month.DECEMBER));
 		System.out.println();
-		
-		for(Month month : Month.getWinterMonths())
+
+		for (Month month : Month.getWinterMonths())
 			System.out.println(month);
 	}
 

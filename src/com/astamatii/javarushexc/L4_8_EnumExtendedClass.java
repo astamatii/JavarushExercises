@@ -14,7 +14,7 @@ public class L4_8_EnumExtendedClass {
 		System.out.println(direct.hashCode() == value.hashCode());
 
 		System.out.println("\n" + Arrays.toString(DayOfWeek.values()));
-		
+
 		System.out.println("\nWeekend:");
 		for (DayOfWeek day : DayOfWeek.getWeekend()) {
 			System.out.println(day);

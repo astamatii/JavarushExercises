@@ -27,7 +27,8 @@ public class L4_4_CollectionsForForEachIterator {
 
 		// III
 		ArrayList<String> words = new ArrayList<>();
-		Collections.addAll(words, new String[] {"Hello world!", "Amigo", "Elly", "Kerry", "Bug", "bug", "bUG", "bug", "Easy ug", "Risha"});
+		Collections.addAll(words, new String[] { "Hello world!", "Amigo", "Elly", "Kerry", "Bug", "bug", "bUG", "bug",
+				"Easy ug", "Risha" });
 
 		ArrayList<String> copyWordsFirst = new ArrayList<>(words);
 		ArrayList<String> copyWordsSecond = new ArrayList<>(words);
@@ -38,7 +39,7 @@ public class L4_4_CollectionsForForEachIterator {
 		removeBugWithCopy(copyWordsThird);
 
 		String line = "_________________________";
-		
+
 		printList(words);
 		System.out.println(line);
 		copyWordsFirst.forEach(System.out::println);
@@ -85,7 +86,7 @@ public class L4_4_CollectionsForForEachIterator {
 			add("BUG");
 		}
 	};
-	
+
 	public static String bug = "bug";
 
 	// remove bug using for loop

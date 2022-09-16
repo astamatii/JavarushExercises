@@ -32,7 +32,7 @@ public class L4_5_CollectionsMethods {
 		ArrayList<Integer> list3 = new ArrayList<>();
 		Collections.addAll(list3, 45, -23, 34, -34, 0);
 		print(list3);
-		
+
 		System.out.println("_________________________\nreverse(list3)");
 		reverse(list3);
 		print(list3);
@@ -40,7 +40,7 @@ public class L4_5_CollectionsMethods {
 		System.out.println("_________________________\nsort(list3)");
 		sort(list3);
 		print(list3);
-		
+
 		System.out.println("_________________________\nrotate(list3,dimension)");
 		rotate(list3, 3);
 		print(list3);
@@ -52,13 +52,13 @@ public class L4_5_CollectionsMethods {
 		// III
 		System.out.println("\nIII_________________________\nmin(list3)");
 		System.out.println(min(list3));
-		
+
 		System.out.println("_________________________\nmin(list3)");
 		System.out.println(max(list3));
-		
+
 		System.out.println("_________________________\nfrequency(list3, number 0)");
 		System.out.println(frequency(list3, 0));
-		
+
 		System.out.println("_________________________\nbinarySearch(list, number 0)");
 		sort(list3);
 		System.out.println(binarySearch(list3, 0));

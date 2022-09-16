@@ -49,13 +49,16 @@ public class L4_6_HashMapExc {
 		System.out.println(lidiaName);
 
 		System.out.println("Будет удален " + passportsAndNames.remove(162348)); // Remove one element
-		System.out.println("Смена значения для " + passportsAndNames.put(925648, "Александр Сергейевич Пупкин")); // Only change the value
+		System.out.println("Смена значения для " + passportsAndNames.put(925648, "Александр Сергейевич Пупкин")); // Only
+																													// change
+																													// the
+																													// value
 		System.out.println(passportsAndNames);
-		
 
 		System.out.println();
 		System.out.println("Содержит ли ключ 11111: " + passportsAndNames.containsKey(11111)); // false
-		System.out.println("Содержит ли значение Дональд Джон Трамп: " + passportsAndNames.containsValue("Дональд Джон Трамп")); // true
+		System.out.println(
+				"Содержит ли значение Дональд Джон Трамп: " + passportsAndNames.containsValue("Дональд Джон Трамп")); // true
 		System.out.println("Пустой ли данный HashMap: " + passportsAndNames.isEmpty()); // false
 		System.out.println("Размер данного HashMap: " + passportsAndNames.size()); // size = 5
 		System.out.println("Удаляем все НАХУЙ!");

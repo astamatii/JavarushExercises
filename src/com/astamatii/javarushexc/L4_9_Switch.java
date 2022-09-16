@@ -31,24 +31,23 @@ public class L4_9_Switch {
 		System.out.println(getShapeNameByCountOfCorners(10));
 		System.out.println();
 		System.out.println(getValue(1));
-		
+
 	}
 
-	
 	public static int getValue(int count) {
-		
+
 		// On Java 13 version:
 		int value = switch (count) {
-		  case 1:
-		     yield 12;
-		  case 2:
-		     yield 32;
-		  case 3:
-		     yield 52;
-		  default:
-		     yield 0;
+		case 1:
+			yield 12;
+		case 2:
+			yield 32;
+		case 3:
+			yield 52;
+		default:
+			yield 0;
 		};
-		
+
 		// On Java 12 version:
 //		int value = switch (count) {
 //		  case 1:
@@ -60,11 +59,11 @@ public class L4_9_Switch {
 //		  default:
 //		     break 0;
 //		};
-		
+
 		return value;
 	}
-	
-	// Not recommended version, just for showing 
+
+	// Not recommended version, just for showing
 	public static List<String> getPlanetAtmosphere(int seqNumberFromSun) {
 		List<String> result = new ArrayList<>();
 		switch (seqNumberFromSun) {

@@ -68,12 +68,12 @@ public class L4_7_LinkedListNodes {
 		System.out.print("Linkedlist - ");
 		System.gc();
 		getTimeMsOfInsertFirst(new LinkedList());
-		
+
 		System.out.println();
 		System.out.println("Adding to the central position :");
-		
+
 		System.out.print("Arraylist - ");
-		System.gc();		
+		System.gc();
 		getTimeMsOfInsertCenter(new ArrayList());
 		System.out.print("Linkedlist - ");
 		System.gc();
@@ -96,7 +96,7 @@ public class L4_7_LinkedListNodes {
 		return msDelay;
 
 	}
-	
+
 	public static long getTimeMsOfInsertFirst(List list) {
 		// напишите тут ваш код
 		Date currentTime = new Date();

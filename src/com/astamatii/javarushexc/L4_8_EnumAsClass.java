@@ -4,16 +4,16 @@ public class L4_8_EnumAsClass {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		Month jan = Month.JANUARY;
-		
+
 		Month[] months = Month.values();
-		
+
 		System.out.println(jan);
 		System.out.println(months[1]);
 		System.out.println(jan.ordinal());
 		System.out.println(months[1].ordinal());
-		
+
 	}
 
 	static class Month {
@@ -38,11 +38,11 @@ public class L4_8_EnumAsClass {
 		private Month(int value) {
 			this.value = value;
 		}
-		
+
 		public static Month[] values() {
 			return values;
 		}
-		
+
 		public int ordinal() {
 			return this.value;
 		}

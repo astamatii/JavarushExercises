@@ -10,7 +10,7 @@ public class L2_CharCompareCrazy {
 		compare('ы','ы');
 		compare('ы','ы');
 	}
-	
+
 	public static void compare(Character first, Character second) {
 		if(first.equals(second))
 			System.out.println("Equal");
