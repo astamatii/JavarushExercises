@@ -3,7 +3,7 @@ package com.astamatii.javarushexc;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-// test
+
 public class L5_4_NumberFormatException {
 
 	public static final String PROMPT_STRING = "Введите номер студента, или exit для выхода: ";
