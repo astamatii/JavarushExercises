@@ -1,4 +1,4 @@
-package com.astamatii.javarushexc.javasyntaxzero.L8;
+package com.astamatii.javarushexc.javasyntaxzero.L8.lesson_5;
 
 import java.util.ArrayList;
 import java.util.Collections;
