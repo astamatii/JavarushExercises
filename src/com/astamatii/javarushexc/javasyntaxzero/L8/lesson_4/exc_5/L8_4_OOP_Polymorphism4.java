@@ -1,4 +1,4 @@
-package com.astamatii.javarushexc.javasyntaxzero.level_8.lesson_4.exc_5;
+package com.astamatii.javarushexc.javasyntaxzero.L8.lesson_4.exc_5;
 
 //Класс Pet является родительским классом для классов Cat и Dog. 
 //В нем реализован метод printInfo(), который сообщает, что данный объект является питомцем.

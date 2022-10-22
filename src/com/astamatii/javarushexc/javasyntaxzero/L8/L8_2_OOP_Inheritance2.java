@@ -1,4 +1,4 @@
-package com.astamatii.javarushexc.javasyntaxzero.level_8;
+package com.astamatii.javarushexc.javasyntaxzero.L8;
 
 //Классы Triangle, Rectangle и Circle — геометрические фигуры, поэтому они и унаследованы от класса Shape.
 //Переопредели в них метод printInfo(), чтобы в консоли выводилось название конкретной фигуры:

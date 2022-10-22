@@ -1,4 +1,4 @@
-package com.astamatii.javarushexc.javasyntaxzero.level_8;
+package com.astamatii.javarushexc.javasyntaxzero.L8;
 
 //Класс Bat (летучая мышь) унаследован от класса Animal. 
 //Все логично, вот только при вызове метода move() у объекта класса Bat выведется в консоли "Я бегу!".

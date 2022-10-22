@@ -1,4 +1,4 @@
-package com.astamatii.javarushexc.javasyntaxzero.level_8;
+package com.astamatii.javarushexc.javasyntaxzero.L8;
 
 import java.util.ArrayList;
 import java.util.Collections;
