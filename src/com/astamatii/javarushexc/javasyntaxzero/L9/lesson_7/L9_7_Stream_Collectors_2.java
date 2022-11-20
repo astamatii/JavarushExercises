@@ -1,6 +1,5 @@
 package com.astamatii.javarushexc.javasyntaxzero.L9.lesson_7;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
