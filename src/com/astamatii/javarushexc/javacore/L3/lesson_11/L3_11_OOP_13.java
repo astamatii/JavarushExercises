@@ -34,6 +34,7 @@ final class BodyPart {
     final static BodyPart LEG = new BodyPart("нога");
     final static BodyPart HEAD = new BodyPart("голова");
     final static BodyPart ARM = new BodyPart("рука");
+    final static BodyPart CHEST = new BodyPart("грудь");
 
     private String bodyPart;
 
@@ -55,22 +56,10 @@ interface Defensable {
     BodyPart defense();
 }         
 
-class AbstractRobot {
-}          
-
-class Robot implements Attackable, Defensable {
-    private static int hitCount;
-    private String name;
-
-    public Robot(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public BodyPart attack() {
+abstract class AbstractRobot implements Attackable, Defensable {
+	private static int hitCount;    
+    
+	public BodyPart attack() {
         BodyPart attackedBodyPart = null;
         hitCount = hitCount + 1;
 
@@ -79,9 +68,11 @@ class Robot implements Attackable, Defensable {
         } else if (hitCount == 2) {
             attackedBodyPart = BodyPart.HEAD;
         } else if (hitCount == 3) {
-            hitCount = 0;
             attackedBodyPart = BodyPart.LEG;
-        }
+        } else if (hitCount == 4) {
+        	hitCount = 0;
+            attackedBodyPart = BodyPart.CHEST;
+        } 
         return attackedBodyPart;
     }
 
@@ -94,9 +85,25 @@ class Robot implements Attackable, Defensable {
         } else if (hitCount == 2) {
             defendedBodyPart = BodyPart.LEG;
         } else if (hitCount == 3) {
-            hitCount = 0;
+            defendedBodyPart = BodyPart.CHEST;
+        } else if (hitCount == 4) {  
+        	hitCount = 0;
             defendedBodyPart = BodyPart.ARM;
-        }
+        } 
         return defendedBodyPart;
+    }
+    
+    public abstract String getName();
+}          
+
+class Robot extends AbstractRobot {
+	private String name;
+	
+    public Robot(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }  
