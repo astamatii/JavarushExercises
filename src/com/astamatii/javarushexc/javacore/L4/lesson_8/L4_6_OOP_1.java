@@ -16,4 +16,28 @@ public class L4_6_OOP_1 {
     }
 
     //add println method here
+    
+    public static void println(Bridge bridge) {
+    	System.out.println(bridge.getCarsCount());
+    }
+}
+
+interface Bridge {
+	int getCarsCount();
+}
+
+class WaterBridge implements Bridge{
+
+	@Override
+	public int getCarsCount() {
+		return 30;
+	}
+}
+
+class SuspensionBridge implements Bridge{
+
+	@Override
+	public int getCarsCount() {
+		return 40;
+	}
 }
