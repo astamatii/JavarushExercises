@@ -7,10 +7,8 @@ package com.astamatii.javarushexc.javacore.L4.lesson_8;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class L4_6_IOExercise_12 {
+public class L4_6_OOP_12_IOExercise {
 	public static void main(String[] args) throws Exception {
 		BufferedReader bufreader = new BufferedReader(new InputStreamReader(System.in));
 		int a = Integer.parseInt(bufreader.readLine());
