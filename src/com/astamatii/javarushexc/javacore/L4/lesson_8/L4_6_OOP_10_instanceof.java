@@ -22,7 +22,7 @@ package com.astamatii.javarushexc.javacore.L4.lesson_8;
 import java.util.LinkedList;
 import java.util.List; 
 
-public class L4_6_OOP_10 {
+public class L4_6_OOP_10_instanceof {
     public static void main(String[] args) {
         List<Number> list = new LinkedList<Number>();
         

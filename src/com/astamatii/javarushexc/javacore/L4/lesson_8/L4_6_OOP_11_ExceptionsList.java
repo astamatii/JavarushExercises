@@ -2,16 +2,11 @@ package com.astamatii.javarushexc.javacore.L4.lesson_8;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-//Заполни список exceptions десятью различными исключениями.
-//Первое исключение уже реализовано в методе initExceptions.
-
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -21,6 +16,10 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
 
+//Заполни список exceptions десятью различными исключениями.
+//Первое исключение уже реализовано в методе initExceptions.
+
+//! In javarush all catch arguments must be assigned as Exception type (... catch(Exception e) ...).
 public class L4_6_OOP_11_ExceptionsList {
     public static List<Exception> exceptions = new ArrayList<Exception>();
 
@@ -131,7 +130,16 @@ public class L4_6_OOP_11_ExceptionsList {
         catch(ClassNotFoundException e){
         	exceptions.add(e);
         }
-        
-
+       
+        //Javarush answer: :D
+//        exceptions.add(new ArrayIndexOutOfBoundsException());
+//        exceptions.add(new IllegalArgumentException());
+//        exceptions.add(new IllegalAccessException());
+//        exceptions.add(new NumberFormatException());
+//        exceptions.add(new ClassCastException());
+//        exceptions.add(new IOException());
+//        exceptions.add(new InterruptedIOException());
+//        exceptions.add(new InterruptedException());
+//        exceptions.add(new SecurityException());
     }    
 }

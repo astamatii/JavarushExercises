@@ -17,7 +17,7 @@ package com.astamatii.javarushexc.javacore.L4.lesson_8;
 // 	(в классе используй комбинацию клавиш Alt+Insert (для Windows) и выбери команду Getter).
 //12. Все созданные классы и интерфейс должны быть в отдельных файлах.
 
-public class L4_6_OOP_5 {
+public class L4_6_OOP_5_Interface {
     public static void main(String[] args) {
         Computer computer = new Computer(new Keyboard(), new Mouse(), new Monitor());
         if (isWork(computer.getKeyboard()) &&

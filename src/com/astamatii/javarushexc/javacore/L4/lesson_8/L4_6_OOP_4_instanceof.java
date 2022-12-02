@@ -4,7 +4,7 @@ package com.astamatii.javarushexc.javacore.L4.lesson_8;
 //Если в метод передают объект типа Drawable, у этого объекта вызывался метод draw.
 //Если в метод передают объект типа Movable, у этого объекта вызывался метод move.
 
-public class L4_6_OOP_4 {
+public class L4_6_OOP_4_instanceof {
     public static void main(String[] args) {
         Object obj = new Circle();
         Movable movable = (Movable) obj;
@@ -16,6 +16,11 @@ public class L4_6_OOP_4 {
 
     public static void printMainInfo(Object object) {
         //напишите тут ваш код
+    	
+    	if (object instanceof Drawable)
+    		((Drawable)object).draw();
+    	if (object instanceof Movable)
+    		((Movable)object).move();
     }
 
     static interface Movable {

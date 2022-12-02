@@ -9,7 +9,7 @@ package com.astamatii.javarushexc.javacore.L4.lesson_8;
 //В методе println() вывести на консоль значение getCarsCount() для объекта bridge.
 //Каждый класс и интерфейс должны быть в отдельных файлах.
 
-public class L4_6_OOP_1 {
+public class L4_6_OOP_1_Interface {
     public static void main(String[] args) {
         println(new WaterBridge());
         println(new SuspensionBridge());
