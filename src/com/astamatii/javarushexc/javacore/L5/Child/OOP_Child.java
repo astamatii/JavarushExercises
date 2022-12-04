@@ -29,7 +29,7 @@ public class OOP_Child extends OOP_Parent{
 	  return "Child";
 	 }
 	
-	//Order for methods and fields
+	//Order for methods and fields:
 	public int getSum() {
 		return this.a + this.b;
 	}
@@ -43,5 +43,23 @@ public class OOP_Child extends OOP_Parent{
 //	int c = 3 + d;	// c doesn`t see d because it`s not defined before c
 	int d = 2;
 	
+	//Experiments with internal class and modifiers:
+	private void testInside() {
+//		x = 12; 						//ERROR! default modifier variables are unreachable in child class in another package
+//		i.i = 12; 						//ERROR! object declared in parent class from a private internal class 
+										//is unreachable in child class
+		i = null;						//but the variable is visible by its own;
+//		OOP_Parent.Inside.static_i = 4; //ERROR! static variables of private internal class from parent class
+										//is unreachable in child class
+//		Inside2.static_i = 12; 			//ERROR! private variables of protected internal class from parent class
+										//is unreachable in child class
+//		Inside2 in = new Inside2();		//ERROR! protected constructor inside the protected internal class 
+										//from parent class in unreachable in child class 
+		Inside2.g = 10;					//public static fieds inside the protected internal class 
+										//from parent class are reachable in child class
+		Inside2 ins = new Inside2("");	//public constructor field inside the protected internal class 
+										//from parent class are reachable in child class
+
+	}
 	
 }
