@@ -10,23 +10,29 @@ package com.astamatii.javarushexc.javacore.L5.lesson_2;
 
 public class L5_2_Modifiers_5 {
     public interface HasWeight {
-        int getValue();
+        int getWeight();
     }
 
     public interface HasHeight {
-        int getValue();
+        int getHeight();
     }
 
     public static class Human implements HasWeight, HasHeight {
-        @Override
-        public int getValue() {
-            return 0;
-        }
+
+    	@Override
+		public int getHeight() {
+			return 23;
+		}
+
+		@Override
+		public int getWeight() {
+			return 42;
+		}
     }
 
     public static void main(String[] args) {
         Human human = new Human();
-        System.out.println(human.getValue());
-        System.out.println(human.getValue());
+        System.out.println(human.getHeight());
+        System.out.println(human.getWeight());
     } 
 }

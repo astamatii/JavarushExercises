@@ -20,13 +20,13 @@ public class L5_4_MethodOverloading_1 {
         System.out.println("Это Integer");
     }
 
-    public static void print(int i) {
-        System.out.println("Это Integer");
-    }
+//    public static void print(int i) {
+//        System.out.println("Это Integer");
+//    }
 
-    public static void print(Short i) {
-        System.out.println("Это Object");
-    }
+//    public static void print(Short i) {
+//        System.out.println("Это Object");
+//    }
 
     public static void print(Object i) {
         System.out.println("Это Object");
@@ -36,11 +36,11 @@ public class L5_4_MethodOverloading_1 {
         System.out.println("Это double");
     }
 
-    public static void print(Double i) {
-        System.out.println("Это double");
-    }
+//    public static void print(Double i) {
+//        System.out.println("Это double");
+//    }
 
-    public static void print(float i) {
-        System.out.println("Это Double");
-    }    
+//    public static void print(float i) {
+//        System.out.println("Это Double");
+//    }    
 }

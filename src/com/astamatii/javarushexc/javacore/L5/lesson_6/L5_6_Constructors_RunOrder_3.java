@@ -12,15 +12,11 @@ public class L5_6_Constructors_RunOrder_3 {
 
     }
 
-    public class Machine extends Object implements Runnable {
-        public Machine() {
-            super();
-        }
+    public class Machine implements Runnable {
+
     }
 
-    public class Car extends Machine implements Runnable {
-        public Car() {
-            super();
-        }
+    public class Car implements Runnable {
+
     }  
 }

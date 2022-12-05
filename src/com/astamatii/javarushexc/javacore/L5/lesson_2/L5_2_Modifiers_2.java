@@ -13,6 +13,20 @@ package com.astamatii.javarushexc.javacore.L5.lesson_2;
 public class L5_2_Modifiers_2 {
     //добавьте классы Goose и Dragon тут
 
+	public static class Goose extends SmallAnimal {
+		@Override
+		public String getSize() {
+			return "Гусь маленький, " + super.getSize();
+		}
+	}
+	
+	public static class Dragon extends BigAnimal {
+		@Override
+		public String getSize() {
+			return "Дракон большой, " + super.getSize();
+		}
+	}
+	
     public static void main(String[] args) {
 
     }

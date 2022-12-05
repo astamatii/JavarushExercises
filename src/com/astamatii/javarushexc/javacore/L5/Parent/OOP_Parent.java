@@ -28,7 +28,7 @@ public class OOP_Parent {
 	private void testInside() {
 		i = new Inside(); 		//internal private class constructor is reachable
 		i.i = 4;				//private object fields of internal private class are reachable
-		Inside.static_i = 10; 	//private static fields of internal private class are reachable
+		int a = Inside.static_i; 	//private static fields of internal private class are reachable
 	}
 	
 	protected Inside i = new Inside(); 	//internal private class constructor is reachable
@@ -39,14 +39,14 @@ public class OOP_Parent {
 	private class Inside {		//All internal objects inside are not visible in OOP_Child!
 		private int i = 10;
 		public int j = 10;
-		private static int static_i = 20;
+		private static final int static_i = 20; //Only static final (as constant) in internal class
 	}
 	protected class Inside2 {
 		protected Inside2() {}		//it`s not visible in OOP_Child!
 		public Inside2(String a) {} //to be visible in OOP_Child it should be public 
 		protected int i = 10;
 		public int j = 10;
-		private static int static_i = 20;
-		public static int g = 30;
+		private static final int static_i = 20;
+		public static final int g = 30;
 	}
 }

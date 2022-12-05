@@ -55,7 +55,7 @@ public class OOP_Child extends OOP_Parent{
 										//is unreachable in child class
 //		Inside2 in = new Inside2();		//ERROR! protected constructor inside the protected internal class 
 										//from parent class in unreachable in child class 
-		Inside2.g = 10;					//public static fieds inside the protected internal class 
+		int a = Inside2.g;				//public static fieds inside the protected internal class 
 										//from parent class are reachable in child class
 		Inside2 ins = new Inside2("");	//public constructor field inside the protected internal class 
 										//from parent class are reachable in child class
