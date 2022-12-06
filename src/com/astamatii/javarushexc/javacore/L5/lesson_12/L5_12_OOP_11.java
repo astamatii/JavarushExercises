@@ -10,15 +10,15 @@ public class L5_12_OOP_11 {
         new B(6);
     }
 
-    public static class A {
-        private int f1 = 7;
+    public abstract static class A {
+    	private int f1 = 7;
 
-        public A(int f1) {
+        protected A(int f1) {
             this.f1 = f1;
             initialize();
         }
 
-        protected void initialize() {
+        private void initialize() { //protected -> private
             System.out.println(f1);
         }
     }
@@ -28,10 +28,10 @@ public class L5_12_OOP_11 {
 
         public B(int f1) {
             super(f1);
-            this.f1 += f1;
+			this.f1 += f1;
             initialize();
         }
-
+        
         protected void initialize() {
             System.out.println(f1);
         }

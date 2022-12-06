@@ -22,15 +22,52 @@ public class L5_12_OOP_1 {
 
     static {
         //add your code here - добавьте код тут
+    	CanFly result;
+    	reset();
     }
 
     public static CanFly result;
 
     public static void reset() {
         //add your code here - добавьте код тут
+    	    	
+    	try (BufferedReader bufreader = new BufferedReader(new InputStreamReader(System.in))){
+    		String line = bufreader.readLine();
+    		if(line.equals("helicopter"))
+    			result = new Helicopter();
+    		if(line.equals("plane")) {
+    			result = new Plane(Integer.parseInt(bufreader.readLine()));
+    		}
+    		
+    		bufreader.close();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     }
 }
 
 interface CanFly {
     void fly();   
+}
+
+class Plane implements CanFly {
+
+	public Plane (int passengers) {
+		
+	}
+	
+	@Override
+	public void fly() {
+		
+	}
+	
+}
+
+class Helicopter implements CanFly {
+
+	@Override
+	public void fly() {
+		
+	}
+	
 }

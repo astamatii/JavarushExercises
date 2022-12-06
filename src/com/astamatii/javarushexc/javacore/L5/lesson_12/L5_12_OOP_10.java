@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +15,36 @@ import java.util.List;
 public class L5_12_OOP_10 {
     public static List<String> lines = new ArrayList<String>();
 
+    static {
+    	try (FileReader fileReader = new FileReader (Statics.FILE_NAME);
+    			BufferedReader bufReader = new BufferedReader(fileReader)){
+    		while (bufReader.ready()) {
+    			lines.add(bufReader.readLine());
+    		}
+    	} catch (FileNotFoundException e) {
+    		e.printStackTrace();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	} 
+    }
+    
     public static void main(String[] args) {
         System.out.println(lines);
     }
 }
 
-//class Statics {
-//    public static String FILE_NAME = /* add the path to your source file here */;
-//}   
+class Statics {
+	public static String FILE_NAME; /* add the path to your source file here */;;
+	
+	static {
+		try (BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in))) {
+			
+			FILE_NAME = bufReader.readLine();     
+	    
+		} catch (IOException e) {
+			e.printStackTrace();		
+		}
+	}
+	
+    
+}   

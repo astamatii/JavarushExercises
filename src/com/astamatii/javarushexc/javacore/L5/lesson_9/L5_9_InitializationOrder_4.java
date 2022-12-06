@@ -13,14 +13,17 @@ package com.astamatii.javarushexc.javacore.L5.lesson_9;
 //java: initializer must be able to complete normally
 //java: unreachable statement
 
+import java.lang.*;
+
 public class L5_9_InitializationOrder_4 {
     public static int A = 0;
 
     static {
         //throw an exception here - выбросьте эксепшн тут
+//    	throw new RuntimeException();
     }
 
-    public static int B = 5;
+    public static int B;
 
     public static void main(String[] args) {
         System.out.println(B);
