@@ -22,10 +22,66 @@ public class L5_12_OOP_7 {
     public static Planet thePlanet;
 
     //add static block here - добавьте статический блок тут
-
+    static {
+    	readKeyFromConsoleAndInitPlanet();
+    }
+    
     public static void readKeyFromConsoleAndInitPlanet() {
         // implement step #5 here - реализуйте задание №5 тут
+    	try (BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in))){
+    		String line = bufReader.readLine();
+    		
+    		if (Planet.SUN.equals(line))
+    			thePlanet = Sun.getInstance();
+    		else if (Planet.MOON.equals(line))
+    			thePlanet = Moon.getInstance();
+    		else if (Planet.EARTH.equals(line))
+    			thePlanet = Earth.getInstance();
+    		else thePlanet = null;
+    			
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     } 
+}
+
+class Sun implements Planet {
+	private static Sun instance;
+	
+	private Sun() {}
+	
+	public static Sun getInstance() {
+		if(instance == null) {
+			instance = new Sun();
+		}
+		return instance;
+	}
+}
+
+class Moon implements Planet {
+	private static Moon instance;
+	
+	private Moon() {}
+	
+	public static Moon getInstance() {
+		if(instance == null) {
+			instance = new Moon();
+		}
+		return instance;
+	}
+}
+
+class Earth implements Planet {
+	private static Earth instance;
+	
+	private Earth() {}
+	
+	public static Earth getInstance() {
+		if(instance == null) {
+			instance = new Earth();
+		}
+		return instance;
+	}
 }
 
 interface Planet {

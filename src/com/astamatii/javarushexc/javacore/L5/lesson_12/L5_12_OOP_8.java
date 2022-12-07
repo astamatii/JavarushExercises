@@ -11,3 +11,26 @@ public class L5_12_OOP_8 {
 
     }
 }
+
+class Solution {
+	public Solution() {}
+	protected Solution(int x) {}
+	Solution(String s) {}
+	private Solution(Solution s) {}
+}
+
+class SubSolution extends Solution {
+
+	public SubSolution() {
+		super();
+	}
+
+	protected SubSolution(int x) {
+		super(x);
+	}
+
+	SubSolution(String s) {
+		super(s);
+	}
+	
+}
