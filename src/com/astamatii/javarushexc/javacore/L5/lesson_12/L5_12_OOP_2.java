@@ -21,3 +21,53 @@ public class L5_12_OOP_2 {
     public static void main(String[] args) {
     } 
 }
+
+abstract class DrinkMaker {
+	abstract void getRightCup();
+	abstract void putIngredient();
+	abstract void pour();
+	
+	void makeDrink() {
+		getRightCup();
+		putIngredient();
+		pour();
+	}
+}
+
+class LatteMaker extends DrinkMaker {
+
+	@Override
+	void getRightCup() {
+		System.out.println("Берем чашку для латте");
+	}
+
+	@Override
+	void putIngredient() {
+		System.out.println("Делаем молоко с пенкой");
+	}
+
+	@Override
+	void pour() {
+		System.out.println("Заливаем кофе");
+	}
+	
+}
+
+class TeaMaker extends DrinkMaker {
+
+	@Override
+	void getRightCup() {
+		System.out.println("Берем чашку для чая");
+	}
+
+	@Override
+	void putIngredient() {
+		System.out.println("Насыпаем чай");
+	}
+
+	@Override
+	void pour() {
+		System.out.println("Заливаем кипятком");
+	}
+	
+}

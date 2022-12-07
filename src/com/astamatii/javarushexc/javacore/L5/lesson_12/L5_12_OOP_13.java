@@ -11,7 +11,7 @@ public class L5_12_OOP_13 {
         abstract Money getMoney();
 
         public Object getAmount() {
-            return getMoney().getAmount();
+            return getMoney();//.getAmount();
         }
     }
 

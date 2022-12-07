@@ -2,7 +2,7 @@ package com.astamatii.javarushexc.javacore.L5.lesson_12;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader; 
+import java.io.InputStreamReader;
 
 //В этой задаче тебе нужно:
 //1. Считывать с консоли данные, пока не будет введено слово "exit".
@@ -13,23 +13,49 @@ import java.io.InputStreamReader;
 //	- иначе — вызвать метод print() для String.
 
 public class L5_12_OOP_4 {
-    public static void main(String[] args) throws IOException {
-        //напиште тут ваш код
-    }
+	public static void main(String[] args) throws IOException {
+		// напиште тут ваш код
+		BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in));
+		String line;
+		while (!(line = bufReader.readLine()).equals("exit")) {
 
-    public static void print(Double value) {
-        System.out.println("Это тип Double, значение " + value);
-    }
+			try {
+				if (line.contains(".")) {
+					print(Double.parseDouble(line));
+					return;
+				}
 
-    public static void print(String value) {
-        System.out.println("Это тип String, значение " + value);
-    }
+				Integer num = Integer.parseInt(line);
 
-    public static void print(short value) {
-        System.out.println("Это тип short, значение " + value);
-    }
+				if (num <= 0 || num >= 128) {
+					print(num);
+				} else {
+					print(num.shortValue());
+				}
 
-    public static void print(Integer value) {
-        System.out.println("Это тип Integer, значение " + value);
-    }
+			} catch (Exception e) {
+				print(line);
+			}
+
+		}
+		
+		bufReader.close();
+
+	}
+
+	public static void print(Double value) {
+		System.out.println("Это тип Double, значение " + value);
+	}
+
+	public static void print(String value) {
+		System.out.println("Это тип String, значение " + value);
+	}
+
+	public static void print(short value) {
+		System.out.println("Это тип short, значение " + value);
+	}
+
+	public static void print(Integer value) {
+		System.out.println("Это тип Integer, значение " + value);
+	}
 }

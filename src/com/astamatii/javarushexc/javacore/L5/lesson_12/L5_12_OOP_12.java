@@ -3,6 +3,7 @@ package com.astamatii.javarushexc.javacore.L5.lesson_12;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 //Для решения этой задачи тебе нужно:
 //1. Считать с консоли URL-ссылку.
@@ -11,7 +12,7 @@ import java.io.InputStreamReader;
 //	URL содержит минимум 1 параметр.
 //	Выводить параметры нужно в той же последовательности, в которой они представлены в URL.
 //3. Если присутствует параметр obj, то передать его значение в нужный метод alert():
-//	- alert(double value) - для чисел (не забывай о том, что число может быть дробным);
+//	- alert(duble value)o - для чисел (не забывай о том, что число может быть дробным);
 //	- alert(String value) - для строк.
 //	Обрати внимание на то, что метод alert() необходимо вызывать после вывода списка всех параметров на экран.
 //	
@@ -33,17 +34,28 @@ import java.io.InputStreamReader;
 //		double: 3.14
 
 public class L5_12_OOP_12 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String url = reader.readLine();
-        //напишите тут ваш код
-    }
+	public static void main(String[] args) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String url = reader.readLine();
+		// напишите тут ваш код
+		String[] params = url.split("\\?")[1].split("&");
+		Arrays.stream(params).forEach(x -> System.out.println(x + " "));
+		Arrays.stream(params)
+		.filter(x -> x.split("=")[0].equals("obj"))
+		.map(x -> x.split("=", 2)[1])
+		.forEach(x -> {
+			try{alert(Double.parseDouble(x));} 
+			catch (Exception e) {alert(x);}
+			}
+		);
+		
+	}
 
-    public static void alert(double value) {
-        System.out.println("double: " + value);
-    }
+	public static void alert(double value) {
+		System.out.println("double: " + value);
+	}
 
-    public static void alert(String value) {
-        System.out.println("String: " + value);
-    } 
+	public static void alert(String value) {
+		System.out.println("String: " + value);
+	}
 }
