@@ -4,29 +4,50 @@ import com.astamatii.javarushexc.javacore.L5.Child.OOP_Child;
 import com.astamatii.javarushexc.javacore.L5.Parent.OOP_Parent;
 
 public class OOP_Experiments {
-	public static void print(int n) {
-		System.out.println(n);
-	}
+//	public static void print(long n) {
+//		System.out.println("long");
+//	}
 
-	public static void print(short n) {
-		System.out.println(n);
-	}
+//	public static void print(short n) {
+//		System.out.println("short");
+//	}
 
 	public static void print(Integer n) {
-		System.out.println(n);
+		System.out.println("Integer");
+	}
+	
+	public static void print(Long n) {
+		System.out.println("Long");
+	}
+	
+//	public static void print(float n) {
+//		System.out.println("float");
+//	}
+	
+//	public static void print(double n) {
+//		System.out.println("double");
+//	}
+	
+//	public static void print(Double n) {
+//		System.out.println("Double");
+//	}
+	
+	public static void print(Float n) {
+		System.out.println("Float");
 	}
 
 	public static void print(String s) {
-		System.out.println(s);
+		System.out.println("String");
 	}
 
 	public static void main(String[] args) {
 		//в процессе определения метода, который нужно вызвать, типы могут только расширяться, но не сужаться.
-		OOP_Experiments.print(1);			//print(int n)
-		OOP_Experiments.print((byte) 1); 	//print(short n)
+		//OOP_Experiments.print(1);			//print(int n)
+		//OOP_Experiments.print((short)1); 	//print(short n)
 		OOP_Experiments.print("1");			//print(String n)
 		//OOP_Experiments.print(null); 		//ambiguous(неопределенность)
 		OOP_Experiments.print((Integer)null); //or (String null)
+		OOP_Experiments.print(2.3f);
 		
 		Methods.print((byte) 1);	//print(short)
 		Methods.print(1);  			//print(Integer) - преобразование из int в Integer (потому что не разрешено ссужение)
@@ -54,6 +75,11 @@ public class OOP_Experiments {
 		 System.out.println("\nTesting parent and child constructor:");
 		 OOP_Child test = new OOP_Child(1);
 		 System.out.println(test.hi); // It anyway will run parent constructor 
+		 
+		 //Method overloading in OOP_Child
+		 test.print(new OOP_Child());
+		 test.print(new OOP_Parent());
+		 test.print(new Object());
 
 	}
 }
@@ -61,26 +87,26 @@ public class OOP_Experiments {
 class Refs {
 	 public static void print(Object o)
 	 {
-	  System.out.println(o);
+	  System.out.println("Object");
 	 }
 	 public static void print(String s)
 	 {
-	  System.out.println(s);
+	  System.out.println("String");
 	 }
 }
 
 class Shorty {
 	public static void print(short n) {
-		System.out.println(n);
+		System.out.println("short");
 	}
 }
 
 class Methods {
 	public static void print(short n) {
-		System.out.println(n);
+		System.out.println("short");
 	}
 
 	public static void print(Integer n) {
-		System.out.println(n);
+		System.out.println("Integer");
 	}	
 }

@@ -1,5 +1,7 @@
 package com.astamatii.javarushexc.javacore.L5.Child;
 
+import java.util.LinkedList;
+
 import com.astamatii.javarushexc.javacore.L5.Parent.OOP_Parent;
 
 public class OOP_Child extends OOP_Parent{
@@ -10,7 +12,7 @@ public class OOP_Child extends OOP_Parent{
 //	  else
 //	   return "Null value";
 //	 }
-	
+		
 	public OOP_Child() {}
 	
 	public OOP_Child(int a) {
@@ -22,6 +24,11 @@ public class OOP_Child extends OOP_Parent{
 	 {
 		return (OOP_Child) this.parent;
 	 }
+	
+	public LinkedList getList() {
+		return new LinkedList();
+		
+	}
 	
 	@Override
 	public String getName() //Rising scope of the method from protected to public
@@ -43,6 +50,13 @@ public class OOP_Child extends OOP_Parent{
 //	int c = 3 + d;	// c doesn`t see d because it`s not defined before c
 	int d = 2;
 	
+	//Experiments with modifiers
+	//private void test() {} //protected can`t be reduced to private
+	//void test() {} //protected can`t be reduced to default
+	public void test () {} //protected can be expanded to public
+	//protected void test3() {} //public can`t be reduced to private, default or protected
+	
+	
 	//Experiments with internal class and modifiers:
 	private void testInside() {
 //		x = 12; 						//ERROR! default modifier variables are unreachable in child class in another package
@@ -59,7 +73,18 @@ public class OOP_Child extends OOP_Parent{
 										//from parent class are reachable in child class
 		Inside2 ins = new Inside2("");	//public constructor field inside the protected internal class 
 										//from parent class are reachable in child class
-
 	}
 	
+	//Method Overloading
+//	public void print(OOP_Child child) {
+//		System.out.println("Kid");
+//	}
+	
+	public void print(OOP_Parent child) {
+		System.out.println("Parent");
+	}
+	
+	public void print(Object child) {
+		System.out.println("Object");
+	}
 }
