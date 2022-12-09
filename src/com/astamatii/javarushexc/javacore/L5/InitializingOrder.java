@@ -3,25 +3,25 @@ package com.astamatii.javarushexc.javacore.L5;
 public class InitializingOrder {
 
 	public static void main(String[] args) {
-		System.out.println(A.str1);
+		System.out.println("\n----------------A.str1----------------");
 		
-		System.out.println();
+		System.out.println(A.str1 + " from main()");
 		
-		new A().print();
-		A.sprint();
+		System.out.println("\n----------------new A().print()----------------");
 		
-		System.out.println();
+		new A().print("from main()");
 		
-		new B().print();
-		B.sprint();
+		System.out.println("\n----------------A.sprint()----------------");
 		
-		System.out.println();
+		A.sprint("from main()");
 		
-		System.out.println(C.str1);
+		System.out.println("\n----------------C.str1----------------");
 		
-		System.out.println();
+		System.out.println(C.str1 + " from main()");
 		
-		new C().print();
+		System.out.println("\n----------------new C().print()----------------");
+		
+		new C().print("from main()");
 		
 	}
 
@@ -44,6 +44,11 @@ class B {
 	
 	B() {
 		System.out.println("Constructor B()");
+		print("from constructor B");
+		sprint("from constructor B");
+		
+		System.out.println();
+		
 	}
 	
 	static {
@@ -56,12 +61,14 @@ class B {
 		System.out.println(str3);
 	}
 	
-	static void sprint() {
-		System.out.println("Static Method B");
+	//!!! private static method
+	private static void sprint(String str) {
+		System.out.println("Static Method B " + str);
 	}
 	
-	void print() {
-		System.out.println("Instance Method B");
+	//!!! private instance method
+	private void print(String str) {
+		System.out.println("Instance Method B " + str);
 	}
 }
 
@@ -83,6 +90,10 @@ class A extends B {
 	
 	A() {
 		System.out.println("Constructor A()");
+		print("from constructor A");
+		sprint("from constructor A");
+		
+		System.out.println();
 	}
 	
 	static {
@@ -95,12 +106,12 @@ class A extends B {
 		System.out.println(str3);
 	}
 	
-	static void sprint() {
-		System.out.println("Static Method A");
+	static void sprint(String str) {
+		System.out.println("Static Method A " + str);
 	}
 	
-	void print() {
-		System.out.println("Instance Method A");
+	void print(String str) {
+		System.out.println("Instance Method A " + str);
 	}	
 }
 
@@ -122,6 +133,10 @@ class C extends A {
 	
 	C() {
 		System.out.println("Constructor C()");
+		print("from constructor C");
+		sprint("from constructor C");
+		
+		System.out.println();
 	}
 	
 	static {
@@ -134,11 +149,11 @@ class C extends A {
 		System.out.println(str3);
 	}
 	
-	static void sprint() {
-		System.out.println("Static Method C");
+	static void sprint(String str) {
+		System.out.println("Static Method C " + str);
 	}
 	
-	void print() {
-		System.out.println("Instance Method C");
+	void print(String str) {
+		System.out.println("Instance Method C " + str);
 	}	
 }
