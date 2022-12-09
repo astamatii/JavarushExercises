@@ -3,12 +3,25 @@ package com.astamatii.javarushexc.javacore.L5;
 public class InitializingOrder {
 
 	public static void main(String[] args) {
+		System.out.println(A.str1);
+		
+		System.out.println();
+		
 		new A().print();
 		A.sprint();
-		//System.out.println(A.str1);
+		
 		System.out.println();
 		
 		new B().print();
+		B.sprint();
+		
+		System.out.println();
+		
+		System.out.println(C.str1);
+		
+		System.out.println();
+		
+		new C().print();
 		
 	}
 
@@ -88,7 +101,44 @@ class A extends B {
 	
 	void print() {
 		System.out.println("Instance Method A");
+	}	
+}
+
+class C extends A {
+	
+	String str = "Instance field C";
+	
+	static String str1 = "Static field C";
+	
+	static {
+		String str2 = "Field in static block before constructor C";
+		System.out.println(str2);
 	}
 	
+	{
+		String str3 = "Field in instance block before constructor C";
+		System.out.println(str3);
+	}
 	
+	C() {
+		System.out.println("Constructor C()");
+	}
+	
+	static {
+		String str2 = "Field in static block after constructor C";
+		System.out.println(str2);
+	}
+	
+	{
+		String str3 = "Field in instance block after constructor C";
+		System.out.println(str3);
+	}
+	
+	static void sprint() {
+		System.out.println("Static Method C");
+	}
+	
+	void print() {
+		System.out.println("Instance Method C");
+	}	
 }
