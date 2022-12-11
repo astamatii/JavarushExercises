@@ -3,9 +3,13 @@ package com.astamatii.javarushexc.javacore.L5;
 public class InitializingOrder {
 
 	public static void main(String[] args) {
-		System.out.println("\n----------------A.str1----------------");
+//		System.out.println("\n----------------A.str1----------------");
+//		
+//		System.out.println(A.str1 + " from main()");
 		
-		System.out.println(A.str1 + " from main()");
+		System.out.println("\n----------------new A().str----------------");
+		
+		System.out.println(new A().str + " from main()");
 		
 		System.out.println("\n----------------new A().print()----------------");
 		
@@ -15,9 +19,9 @@ public class InitializingOrder {
 		
 		A.sprint("from main()");
 		
-		System.out.println("\n----------------C.str1----------------");
+		//System.out.println("\n----------------C.str1----------------");
 		
-		System.out.println(C.str1 + " from main()");
+		//System.out.println(C.str1 + " from main()");
 		
 		System.out.println("\n----------------new C().print()----------------");
 		
@@ -34,17 +38,17 @@ class B {
 	
 	static {
 		String str2 = "Field in static block before constructor B";
-		System.out.println(str2);
+		System.out.println(str1);
 	}
 	
 	{
 		String str3 = "Field in instance block before constructor B";
-		System.out.println(str3);
+		System.out.println(str);
 	}
 	
 	B() {
 		System.out.println("Constructor B()");
-		print("from constructor B");
+		print(str);
 		sprint("from constructor B");
 		
 		System.out.println();
@@ -62,7 +66,7 @@ class B {
 	}
 	
 	//!!! private static method
-	private static void sprint(String str) {
+	static void sprint(String str) {
 		System.out.println("Static Method B " + str);
 	}
 	
