@@ -31,7 +31,7 @@ public class InitializingOrder {
 
 }
 
-class B {
+abstract class B {
 	String str = "Instance field B";
 	
 	static String str1 = "Static field B";
