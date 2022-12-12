@@ -11,7 +11,7 @@ public class L5_12_OOP_13 {
         abstract Money getMoney();
 
         public Object getAmount() {
-            return getMoney();//.getAmount();
+            return getMoney().getAmount();
         }
     }
 
@@ -21,6 +21,10 @@ public class L5_12_OOP_13 {
 
         public Hryvnia getMoney() {
             return this;
+        }
+        
+        public Object getAmount() { //Automat will convert to Double (Double also works)
+        	return this.amount;
         }
     }
 }

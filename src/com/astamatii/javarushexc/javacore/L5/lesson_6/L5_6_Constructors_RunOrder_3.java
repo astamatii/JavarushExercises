@@ -16,7 +16,7 @@ public class L5_6_Constructors_RunOrder_3 {
 
     }
 
-    public class Car implements Runnable {
+    public class Car extends Machine {
 
     }  
 }

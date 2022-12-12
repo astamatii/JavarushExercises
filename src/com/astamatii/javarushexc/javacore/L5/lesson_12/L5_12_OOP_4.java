@@ -22,15 +22,14 @@ public class L5_12_OOP_4 {
 			try {
 				if (line.contains(".")) {
 					print(Double.parseDouble(line));
-					return;
-				}
-
-				Integer num = Integer.parseInt(line);
-
-				if (num <= 0 || num >= 128) {
-					print(num);
 				} else {
-					print(num.shortValue());
+					Integer num = Integer.parseInt(line);
+
+					if (num <= 0 || num >= 128) {
+						print(num);
+					} else {
+						print(num.shortValue());
+					}
 				}
 
 			} catch (Exception e) {

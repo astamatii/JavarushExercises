@@ -18,7 +18,7 @@ public class L5_12_OOP_5 {
             System.out.println("Flying");
         }
 
-		@Override
+		@Override //Added this method
 		public void doAnotherAction() {
 			System.out.println("Moving");			
 		}

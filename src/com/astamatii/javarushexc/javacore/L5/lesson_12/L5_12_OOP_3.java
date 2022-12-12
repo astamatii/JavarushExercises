@@ -32,8 +32,10 @@ public class L5_12_OOP_3 {
 
     public static String factorial(int n) {
         //add your code here
-    	if(n == 0)
+    	if(n < 0)
     		return "0";
+    	if(n == 0)
+    		return "1";
     	if(n > 150)
     		return "Введите число < 150";
     	

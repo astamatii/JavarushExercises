@@ -10,17 +10,16 @@ package com.astamatii.javarushexc.javacore.L5.lesson_9;
 public class L5_9_InitializationOrder_5 {
     public static Cat cat;
     
-    public static void main(String[] args) {
+    static {
     	cat = new Cat();
+		cat.name = "Kaka";
+		System.out.println(cat.name);
+	}
+    
+    public static void main(String[] args) {
     }
     
     public static class Cat {
-    	public String name;
-    	
-    	static {
-    		Cat cat = new Cat();
-    		cat.name = "Kaka";
-    		System.out.println(cat.name);
-    	}
+    	public String name;    	
     }
 }

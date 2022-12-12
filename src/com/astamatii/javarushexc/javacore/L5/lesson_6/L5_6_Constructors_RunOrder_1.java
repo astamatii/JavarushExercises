@@ -16,13 +16,17 @@ public class L5_6_Constructors_RunOrder_1 {
     }
 
     public static class JavaDev implements SpecificSerializable {
-        String answerQuestion(String question) {
+        private static final long serialVersionUID = 1L;
+
+		String answerQuestion(String question) {
             return String.format("I'll be thinking of [%s]", question);
         }
     }
 
-    public static class JuniorJavaDev extends JavaDev implements SpecificSerializable {
-        JavaDev zapp = new JavaDev();
+    public static class JuniorJavaDev extends JavaDev {
+		private static final long serialVersionUID = 1L;
+		
+		JavaDev zapp = new JavaDev();
         JavaDev hubert = new JavaDev();
 
         String askZapp(String question) {

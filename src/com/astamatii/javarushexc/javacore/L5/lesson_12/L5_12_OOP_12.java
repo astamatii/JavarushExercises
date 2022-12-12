@@ -38,16 +38,43 @@ public class L5_12_OOP_12 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String url = reader.readLine();
 		// напишите тут ваш код
-		String[] params = url.split("\\?")[1].split("&");
-		Arrays.stream(params).forEach(x -> System.out.println(x + " "));
-		Arrays.stream(params)
-		.filter(x -> x.split("=")[0].equals("obj"))
-		.map(x -> x.split("=", 2)[1])
-		.forEach(x -> {
-			try{alert(Double.parseDouble(x));} 
-			catch (Exception e) {alert(x);}
-			}
-		);
+//		String[] params = url.split("\\?")[1].split("&");
+//		Arrays.stream(params).forEach(x -> System.out.print(x.split("=")[0] + " "));
+//		System.out.println();
+//		Arrays.stream(params)
+//		.filter(x -> x.split("=")[0].equals("obj"))
+//		.map(x -> x.split("=", 2)[1])
+//		.forEach(x -> {
+//			try{alert(Double.parseDouble(x));} 
+//			catch (Exception e) {alert(x);}
+//			}
+//		);
+		
+		//JavaRush answer:
+        String paramsSubString = url.substring(url.lastIndexOf("?") + 1);
+        String[] splitParams = paramsSubString.split("&");
+        String objValue = null;
+
+        StringBuilder resultBuilder = new StringBuilder();
+        for (String splitParam : splitParams) {
+            String[] paramAndValue = splitParam.split("=");
+            resultBuilder.append(paramAndValue[0]);
+            resultBuilder.append(" ");
+
+            if (paramAndValue[0].equals("obj")) {
+                objValue = paramAndValue[1];
+            }
+        }
+
+        System.out.println(resultBuilder.toString().trim());
+
+        if (objValue != null) {
+            try {
+                alert(Double.parseDouble(objValue));
+            } catch (NumberFormatException nfe) {
+                alert(objValue);
+            }
+        }   
 		
 	}
 
