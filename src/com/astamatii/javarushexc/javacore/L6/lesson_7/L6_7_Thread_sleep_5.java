@@ -15,13 +15,16 @@ public class L6_7_Thread_sleep_5 {
 
     private static void waiting() {
         // напишите тут ваш код
-
+    	try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
     }
 
     private static void takingOff() {
         // исправь этот метод
         try {
-            Thread.sleep(10000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
         }
     }

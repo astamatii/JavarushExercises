@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 //1. Разберись, что делает программа.
-//2. Реализуй логику метода printCountdown так, чтобы программа каждые полсекунды выводила объект из переменной list. Выводить нужно в обратном порядке - от переданного в Countdown индекса до нуля.
+//2. Реализуй логику метода printCountdown так, чтобы программа каждые полсекунды выводила объект из переменной list. 
+//	Выводить нужно в обратном порядке - от переданного в Countdown индекса до нуля.
 //
 //Пример:
 //Передан индекс 3
@@ -46,6 +47,9 @@ public class L6_7_Thread_sleep_4 {
 
         public void printCountdown() throws InterruptedException {
             //add your code here - добавь код тут
+        	System.out.println(list.get(countFrom - 1));
+        	countFrom--;
+        	Thread.sleep(500);
         }
     }  
 }

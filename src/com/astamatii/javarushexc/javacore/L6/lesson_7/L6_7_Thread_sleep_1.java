@@ -34,6 +34,10 @@ public class L6_7_Thread_sleep_1 {
 
         private void printTikTak() throws InterruptedException {
             //add your code here - добавь код тут
+        	Thread.sleep(500);
+        	System.out.println("Tik");
+        	Thread.sleep(500);
+        	System.out.println("Tak");
         }
     } 
 }

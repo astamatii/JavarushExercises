@@ -46,6 +46,7 @@ public class L6_7_Thread_sleep_2 {
         private void doStep() throws InterruptedException {
             stepNumber++;
             //add your code here - добавь код тут
+            Thread.sleep(1000 / owner.getSpeed());
             System.out.println(owner.getName() + " делает шаг №" + stepNumber + "!");
         }
     }

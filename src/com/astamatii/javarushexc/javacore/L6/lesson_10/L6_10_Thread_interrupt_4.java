@@ -5,6 +5,9 @@ package com.astamatii.javarushexc.javacore.L6.lesson_10;
 //Исправь остальной код программы, если это необходимо. Нельзя использовать метод interrupt.
 
 public class L6_10_Thread_interrupt_4 {
+	
+	public static volatile boolean finish = false; //JavaRush answer
+	
     public static void main(String[] args) throws InterruptedException {
         Thread t = new Thread(new TestThread());
         t.start();
@@ -12,13 +15,15 @@ public class L6_10_Thread_interrupt_4 {
         ourInterruptMethod();
     }
 
-    public static void ourInterruptMethod() {
-
+    public static void ourInterruptMethod() throws InterruptedException {
+    	TestThread.interrupt = true;
+    	finish = true; //JavaRush answer
     }
 
     public static class TestThread implements Runnable {
+    	public static boolean interrupt = false;
         public void run() {
-            while (true) {
+            while (!interrupt) { //JavaRush answer:  while (!finish) 
                 try {
                     System.out.println("he-he");
                     Thread.sleep(500);

@@ -15,7 +15,11 @@ public class L6_5_Thread_join_5 {
     }
 
     private static void investigateWorld() {
-
+    	try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
 
     public static class Cat extends Thread {
@@ -40,7 +44,9 @@ public class L6_5_Thread_join_5 {
 
         private void initAllKittens() throws InterruptedException {
             kitten1.start();
+            kitten1.join();
             kitten2.start();
+            kitten2.join();
         }
     }
 

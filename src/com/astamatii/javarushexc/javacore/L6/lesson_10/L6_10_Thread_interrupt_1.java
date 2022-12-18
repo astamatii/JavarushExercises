@@ -3,7 +3,6 @@ package com.astamatii.javarushexc.javacore.L6.lesson_10;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Date;
 
 //1. Напиши реализацию метода run в нити Stopwatch (секундомер).
 //2. Stopwatch должен посчитать количество секунд, которое прошло от создания нити до ввода строки.
@@ -28,14 +27,15 @@ public class L6_10_Thread_interrupt_1 {
         private int seconds;
 
         public void run() {
-        	long time1 = new Date().getTime();
             try {
                 //напишите тут ваш код
-            	Thread.sleep(100000); //DONE
-            } catch (InterruptedException e) {
-            	seconds = (int)(new Date().getTime() - time1) / 1000;
-                System.out.println(seconds);
-            }
+            	while(true) {
+	            	Thread.sleep(1000);
+	            	seconds++;
+            	}
+	            } catch (InterruptedException e) {
+	                System.out.println(seconds);
+	            }
         }
     }
 }

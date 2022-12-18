@@ -11,15 +11,17 @@ public class L6_5_Thread_join_3 {
 
     public static void main(String[] args) throws InterruptedException {
         Politician ivanov = new Politician("Иванов");
+        ivanov.join();
         Politician petrov = new Politician("Петров");
         Politician sidorov = new Politician("Сидоров");
 
         while (ivanov.getSpeechCount() + petrov.getSpeechCount() + sidorov.getSpeechCount() < totalSpeechCount) {
         }
-
-        System.out.println(ivanov);
+        
+        System.out.println(ivanov);        
         System.out.println(petrov);
         System.out.println(sidorov);
+        
     }
 
     public static class Politician extends Thread {

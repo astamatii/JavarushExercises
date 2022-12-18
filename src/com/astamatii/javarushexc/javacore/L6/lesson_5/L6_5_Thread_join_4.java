@@ -8,7 +8,7 @@ package com.astamatii.javarushexc.javacore.L6.lesson_5;
 public class L6_5_Thread_join_4 {
     public static void main(String[] args) throws InterruptedException {
         Mouse alpha = new Mouse("#1");
-        alpha.join();
+//        alpha.join();
         Mouse mouse1 = new Mouse("#2");
         Mouse mouse2 = new Mouse("#3");
     }
