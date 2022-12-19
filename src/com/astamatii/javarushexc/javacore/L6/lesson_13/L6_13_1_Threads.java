@@ -13,7 +13,8 @@ package com.astamatii.javarushexc.javacore.L6.lesson_13;
 
 public class L6_13_1_Threads {
     public static void main(String[] args) {
-//        ImageReader reader = ImageReaderFactory.getImageReader(ImageTypes.JPG);
+        ImageReader reader = ImageReaderFactory.getImageReader(ImageTypes.JPG);
+        System.out.println(reader);
     }  
 }
 
@@ -25,3 +26,26 @@ enum ImageTypes {
     JPG,
     PNG
 }    
+
+class JpgReader implements ImageReader {
+	
+}
+
+class PngReader implements ImageReader {
+	
+}
+
+class BmpReader implements ImageReader {
+	
+}
+
+class ImageReaderFactory {
+	public static ImageReader getImageReader(ImageTypes imageType) {
+		return switch (imageType) {
+		case JPG -> new JpgReader();
+		case BMP -> new PngReader();
+		case PNG -> new BmpReader();
+		default -> null;
+		};
+	}
+}

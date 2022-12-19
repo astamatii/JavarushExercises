@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;  
+import java.util.List;
 
 //1. Создай 5 различных своих нитей (наследников класса Thread):
 //1.1. Нить 1 должна бесконечно выполняться;
@@ -20,12 +20,103 @@ import java.util.List;
 //Нить 4 можно проверить методом isAlive()
 
 public class L6_13_2_Threads {
-    public static List<Thread> threads = new ArrayList<>(5);
+	public static List<Thread> threads = new ArrayList<>(5);
 
-    public static void main(String[] args) {
-    }
+	static {
+		threads.add(new Thread1());
+		threads.add(new Thread2());
+		threads.add(new Thread3());
+		threads.add(new Thread4());
+		threads.add(new Thread5());
+	}
+
+	public static void main(String[] args) {
+//		threads.get(0).start();
+//		threads.get(1).start();
+//		threads.get(1).interrupt();
+//		threads.get(2).start();
+//		threads.get(3).start();
+//		System.out.println(threads.get(3).isAlive());
+//		((Thread4) threads.get(3)).showWarning();
+//		System.out.println(threads.get(3).isAlive());
+//		threads.get(4).start();
+	}
 }
 
 interface Message {
-    void showWarning();
-}  
+	void showWarning();
+}
+
+class Thread1 extends Thread {
+
+	@Override
+	public void run() {
+		while (true) {
+			run();
+		}
+	}
+}
+
+class Thread2 extends Thread {
+	@Override
+	public void run() {
+		try {
+			Thread.sleep(0);
+		} catch (InterruptedException e) {
+			System.out.println("InterruptedException");
+		}
+	}
+}
+
+class Thread3 extends Thread {
+	@Override
+	public void run() {
+		while(true) {
+			try {
+				Thread.sleep(500);
+				System.out.println("Ура");
+			} catch (InterruptedException e) {
+				System.out.println("InterruptedException");
+			}
+		}		
+	}
+}
+
+class Thread4 extends Thread implements Message {
+
+	@Override
+	public void run() {
+	}
+
+	@Override
+	public void showWarning() {
+		interrupt();
+
+	}
+}
+
+class Thread5 extends Thread {
+
+	@Override
+	public void run() {
+		try (BufferedReader bufreader = new BufferedReader(new InputStreamReader(System.in))) {
+			String line;
+			List<Integer> numbers = new ArrayList<>();
+
+			while (!"N".equals(line = bufreader.readLine())) {
+				try {
+					numbers.add(Integer.parseInt(line));
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println(
+					numbers.stream()
+					.reduce((x, y) -> x + y)
+					.orElseGet(() -> 0)
+					);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

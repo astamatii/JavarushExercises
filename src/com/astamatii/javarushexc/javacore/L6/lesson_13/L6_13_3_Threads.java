@@ -34,7 +34,7 @@ public class L6_13_3_Threads {
 
     public static class TestedThread extends Thread {
         public TestedThread(Thread.UncaughtExceptionHandler handler) {
-            setUncaughtExceptionHandler(handler);
+            setDefaultUncaughtExceptionHandler(handler); //setUncaughtExceptionHandler(handler); -> setDefaultUncaughtExceptionHandler(handler);
             start();
         }
 
