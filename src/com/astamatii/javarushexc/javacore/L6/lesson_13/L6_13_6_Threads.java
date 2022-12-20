@@ -24,6 +24,22 @@ public class L6_13_6_Threads {
         System.out.println(new GenerateThread());
     }
 
-    public static class GenerateThread {
+    public static class GenerateThread extends Thread {
+    	public static String threadNumber;
+    	
+    	GenerateThread (String threadNumber) {
+    		this.threadNumber = threadNumber;
+    		start();
+    	}
+    	
+    	@Override
+    	public static String getName() {
+    		return threadNumber;
+    	}
+    	
+    	@Override
+    	public static String toString() {
+    		return getName() + " created";
+    	}
     } 
 }

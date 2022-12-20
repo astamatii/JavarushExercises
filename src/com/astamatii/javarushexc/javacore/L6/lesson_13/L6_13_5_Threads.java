@@ -20,6 +20,14 @@ public class L6_13_5_Threads {
         for (int i = 0; i < COUNT; i++) {
             new SleepingThread();
             //напишите тут ваш код
+            int name = i + 1;
+            Thread.getAllStackTraces()
+            .keySet()
+            .stream()
+            .filter(t -> t.getName().equals(String.valueOf(name)))
+            .findAny()
+            .get()
+            .join();
         }
     }
 
@@ -37,6 +45,11 @@ public class L6_13_5_Threads {
                 System.out.println(this);
                 if (--countdownIndex == 0) return;
                 //напишите тут ваш код
+                try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					System.out.println("Нить прервана");
+				}
             }
         }
 
