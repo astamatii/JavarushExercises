@@ -2,18 +2,18 @@ package com.astamatii.javarushexc.javacore.L6.lesson_13;
 
 //1. Измени класс GenerateThread так, чтобы он стал нитью.
 //2. Создай конструктор GenerateThread, который должен:
-//2.1. Вызвать конструктор суперкласса с параметром String - номером созданной нити. Используй createdThreadCount.
-//2.2. Запустить текущую нить.
-//2.3. Номер первой нити должен начинается с 1.
+//	2.1. Вызвать конструктор суперкласса с параметром String - номером созданной нити. Используй createdThreadCount.
+//	2.2. Запустить текущую нить.
+//	2.3. Номер первой нити должен начинается с 1.
 //3. Переопредели метод toString, для этого внутри GenerateThread нажми Alt+Insert -> Override Methods. Начни печатать toString.
-//3.1. Метод toString должен возвращать № текущей нити и слово " created". Используй getName().
+//	3.1. Метод toString должен возвращать № текущей нити и слово " created". Используй getName().
 //
 //Пример:
 //8 created
 //
 //4. Пока количество созданных нитей меньше Solution.count метод run должен:
-//4.1. Создать новую нить типа GenerateThread.
-//4.2. Вывести в консоль созданную в пункте 4.1 нить.
+//	4.1. Создать новую нить типа GenerateThread.
+//	4.2. Вывести в консоль созданную в пункте 4.1 нить.
 //5. В итоге должно быть выведено в консоль 15 строк.
 
 public class L6_13_6_Threads {
@@ -25,21 +25,22 @@ public class L6_13_6_Threads {
     }
 
     public static class GenerateThread extends Thread {
-    	public static String threadNumber;
     	
-    	GenerateThread (String threadNumber) {
-    		this.threadNumber = threadNumber;
+    	GenerateThread () {
+    		super(String.valueOf(++createdThreadCount));
     		start();
     	}
     	
     	@Override
-    	public static String getName() {
-    		return threadNumber;
+    	public String toString() {
+    		return getName() + " created";
     	}
     	
     	@Override
-    	public static String toString() {
-    		return getName() + " created";
+    	public void run() {
+    		while(createdThreadCount < 15) {
+    			 System.out.println(new GenerateThread());
+    		}
     	}
     } 
 }
