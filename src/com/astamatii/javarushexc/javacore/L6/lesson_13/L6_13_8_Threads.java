@@ -10,7 +10,8 @@ public class L6_13_8_Threads {
 
     public static void main(String[] args) throws InterruptedException {
         t1.start();
-        t2.start();
+        t1.interrupt();
+        t2.start();    
     }
 
     public static class T1 extends Thread {

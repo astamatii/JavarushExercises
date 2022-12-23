@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger; 
 
 //1. Разберись, что делает программа.
-//1.1. Каждая нить должна читать с консоли строки. Используй готовый static BufferedReader reader.
-//1.2. Используй AtomicInteger readStringCount, чтобы посчитать, сколько строк уже считано с консоли всеми нитями.
+//	1.1. Каждая нить должна читать с консоли строки. Используй готовый static BufferedReader reader.
+//	1.2. Используй AtomicInteger readStringCount, чтобы посчитать, сколько строк уже считано с консоли всеми нитями.
 //2. Реализуй логику метода run:
-//2.1. Пока нить не прервана (!isInterrupted) читай с консоли строки и добавляй их в поле List<String> result.
-//2.2. Используй readStringCount для подсчета уже считанных с консоли строк.
-//2.3. Тело метода run нужно поместить в блок try-catch.
+//	2.1. Пока нить не прервана (!isInterrupted) читай с консоли строки и добавляй их в поле List<String> result.
+//	2.2. Используй readStringCount для подсчета уже считанных с консоли строк.
+//	2.3. Тело метода run нужно поместить в блок try-catch.
 
 public class L6_13_11_Threads {
     public static volatile AtomicInteger readStringCount = new AtomicInteger(0);

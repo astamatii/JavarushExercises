@@ -28,14 +28,42 @@ public class L6_13_12_Threads {
 	public static volatile BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws InterruptedException {
-//        Read3Strings t1 = new Read3Strings();
-//        Read3Strings t2 = new Read3Strings();
+        Read3Strings t1 = new Read3Strings();
+        Read3Strings t2 = new Read3Strings();
 
         //add your code here - добавьте код тут
-
-//        t1.printResult();
-//        t2.printResult();
+        t1.start();
+        t1.join();
+        t2.start();        
+        t2.join();
+        t1.printResult();
+        t2.printResult();
+        
+        try {
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     //add your code here - добавьте код тут 
+    public static class Read3Strings extends Thread {
+    	private String result = "";    	
+    	
+    	@Override
+    	public void run() {
+    		try {
+    			for (int i = 0; i < 3; i++) {
+    				result = result.concat(reader.readLine() + " ");
+    			}
+    			result = result.trim();
+    		} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    	
+    	public void printResult() {
+    		System.out.println(result);
+    	}
+    }
 }
