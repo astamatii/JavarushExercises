@@ -50,6 +50,31 @@ public class L6_13_11_Threads {
 
         public void run() {
             //напишите тут ваш код
+//        	while(!isInterrupted()) {
+//        		String line;
+//        		try {
+//        			if((line = reader.readLine()) != null) {
+//        				result.add(line);
+//    					readStringCount.incrementAndGet();
+//        			}					
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//					interrupt();
+//				}
+//        	}
+        	
+        	//JavaRush answer:
+            String string;
+            try {
+                while (!Thread.currentThread().isInterrupted()) {
+                    if ((string = reader.readLine()) != null) {
+                        result.add(string);
+                        readStringCount.incrementAndGet();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override

@@ -14,7 +14,7 @@ package com.astamatii.javarushexc.javacore.L6.lesson_13;
 public class L6_13_1_Threads {
     public static void main(String[] args) {
         ImageReader reader = ImageReaderFactory.getImageReader(ImageTypes.JPG);
-        System.out.println(reader);
+//        System.out.println(reader);
     }  
 }
 
@@ -41,11 +41,26 @@ class BmpReader implements ImageReader {
 
 class ImageReaderFactory {
 	public static ImageReader getImageReader(ImageTypes imageType) {
-		return switch (imageType) {
-		case JPG -> new JpgReader();
-		case BMP -> new PngReader();
-		case PNG -> new BmpReader();
-		default -> null;
-		};
+		try {
+			return switch (imageType) {
+			case JPG -> new JpgReader();
+			case BMP -> new PngReader();
+			case PNG -> new BmpReader();
+			default -> throw new IllegalArgumentException("Неизвестный тип картинки");
+			};
+//			switch (imageType) {
+//			case JPG:
+//				return new JpgReader();
+//			case BMP:
+//				return new BmpReader();
+//			case PNG:
+//				return new PngReader();
+//			default:
+//				throw new IllegalArgumentException("Неизвестный тип картинки");			
+//			}
+		}catch (Exception e) {
+			throw new IllegalArgumentException("Неизвестный тип картинки");
+		}
+		
 	}
 }

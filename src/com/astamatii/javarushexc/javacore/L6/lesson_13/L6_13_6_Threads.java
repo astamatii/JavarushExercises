@@ -26,7 +26,7 @@ public class L6_13_6_Threads {
 
     public static class GenerateThread extends Thread {
     	
-    	GenerateThread () {
+    	public GenerateThread () {
     		super(String.valueOf(++createdThreadCount));
     		start();
     	}
@@ -38,7 +38,7 @@ public class L6_13_6_Threads {
     	
     	@Override
     	public void run() {
-    		while(createdThreadCount < 15) {
+    		if (createdThreadCount < count) {
     			 System.out.println(new GenerateThread());
     		}
     	}

@@ -20,9 +20,10 @@ public class L6_13_9_Threads {
             try {
                 while (true) {
                 	countIndexUp += 1;
-                    System.out.println(toString());                    
-                    if (countIndexUp == L6_13_9_Threads.number) return; //Solution.number
+                    System.out.println(toString());                 
                     Thread.sleep(500);
+                    if (countIndexUp == L6_13_9_Threads.number) return; //Solution.number
+                    
                 }
             } catch (InterruptedException e) {
             }
@@ -41,8 +42,9 @@ public class L6_13_9_Threads {
                 while (true) {
                     System.out.println(toString());
                     countIndexDown -= 1;
-                    if (countIndexDown == 0) return;
                     Thread.sleep(500);
+                    if (countIndexDown == 0) return;
+                    
                 }
             } catch (InterruptedException e) {
             }

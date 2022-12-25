@@ -41,82 +41,100 @@ public class L6_13_2_Threads {
 //		System.out.println(threads.get(3).isAlive());
 //		threads.get(4).start();
 	}
+	
+	public static class Thread1 extends Thread {
+
+		@Override
+		public void run() {
+			while (true) {
+			}
+		}
+	}
+
+	public static class Thread2 extends Thread {
+		@Override
+		public void run() {
+			try {
+				Thread.sleep(0);
+			} catch (InterruptedException e) {
+				System.out.println("InterruptedException");
+			}
+		}
+	}
+
+	public static class Thread3 extends Thread {
+		@Override
+		public void run() {
+			while(true) {
+				System.out.println("Ура");
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}		
+		}
+	}
+
+	public static class Thread4 extends Thread implements Message {
+
+		@Override
+		public void run() {
+			while (!isInterrupted()) {
+			}
+		}
+
+		@Override
+		public void showWarning() {
+			interrupt();
+
+		}
+	}
+
+	public static class Thread5 extends Thread {
+
+		@Override
+		public void run() {
+			try (BufferedReader bufreader = new BufferedReader(new InputStreamReader(System.in))) {
+				String line;
+				List<Integer> numbers = new ArrayList<>();
+
+				while (!"N".equals(line = bufreader.readLine())) {
+					try {
+						numbers.add(Integer.parseInt(line));
+					} catch (NumberFormatException e) {
+						e.printStackTrace();
+					}
+				}
+				System.out.println(
+						numbers.stream()
+						.reduce((x, y) -> x + y)
+						.orElseGet(() -> 0)
+						);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		//JavaRush answer:
+//		public void run() {
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//            int sum = 0;
+//            while (true) {
+//                try {
+//                    String str = reader.readLine();
+//                    if (str.equals("N"))
+//                        break;
+//                    sum += Integer.parseInt(str);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            System.out.print(sum);
+//        } 
+	}
 }
 
 interface Message {
 	void showWarning();
 }
 
-class Thread1 extends Thread {
-
-	@Override
-	public void run() {
-		while (true) {
-			run();
-		}
-	}
-}
-
-class Thread2 extends Thread {
-	@Override
-	public void run() {
-		try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			System.out.println("InterruptedException");
-		}
-	}
-}
-
-class Thread3 extends Thread {
-	@Override
-	public void run() {
-		while(true) {
-			try {
-				Thread.sleep(500);
-				System.out.println("Ура");
-			} catch (InterruptedException e) {
-				System.out.println("InterruptedException");
-			}
-		}		
-	}
-}
-
-class Thread4 extends Thread implements Message {
-
-	@Override
-	public void run() {
-	}
-
-	@Override
-	public void showWarning() {
-		interrupt();
-
-	}
-}
-
-class Thread5 extends Thread {
-
-	@Override
-	public void run() {
-		try (BufferedReader bufreader = new BufferedReader(new InputStreamReader(System.in))) {
-			String line;
-			List<Integer> numbers = new ArrayList<>();
-
-			while (!"N".equals(line = bufreader.readLine())) {
-				try {
-					numbers.add(Integer.parseInt(line));
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println(
-					numbers.stream()
-					.reduce((x, y) -> x + y)
-					.orElseGet(() -> 0)
-					);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-}

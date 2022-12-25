@@ -8,20 +8,20 @@ import java.util.List;
 //Нужно вывести в консоль ход игры и определить победителя и проигравших.
 //Итак...
 //1. Разберись, что делает программа.
-//1.1. List<String> steps хранит последовательность действий, которое каждый игрок выполняет от 0 до последнего.
-//1.2. isWinnerFound показывает, найден победитель или нет.
-//1.3. Метод sleep выбрасывает InterruptedException и принимает параметр типа long.
-//1.4. Игроки играют независимо друг от друга.
+//	1.1. List<String> steps хранит последовательность действий, которое каждый игрок выполняет от 0 до последнего.
+//	1.2. isWinnerFound показывает, найден победитель или нет.
+//	1.3. Метод sleep выбрасывает InterruptedException и принимает параметр типа long.
+//	1.4. Игроки играют независимо друг от друга.
 //2. Реализуй логику метода run так, чтобы для каждого игрока:
-//2.1. Через равные интервалы времени (1000ms / rating) выводились в консоль действия, описанные в steps.
-//2.2. Любой текст должен начинаться с фамилии игрока (метод getName()), потом следовать двоеточие, 
+//	2.1. Через равные интервалы времени (1000ms / rating) выводились в консоль действия, описанные в steps.
+//	2.2. Любой текст должен начинаться с фамилии игрока (метод getName()), потом следовать двоеточие, 
 //	а затем сам текст.
 //
-//Пример:
-//Ivanov:Начало игры
+//		Пример:
+//		Ivanov:Начало игры
 //
-//2.3. Когда игрок выполнит все действия из steps, то он считается победителем. Выведи getName() + ":победитель!"
-//2.4. Когда найден победитель, то игра останавливается, и остальные игроки считаются побежденными. 
+//	2.3. Когда игрок выполнит все действия из steps, то он считается победителем. Выведи getName() + ":победитель!"
+//	2.4. Когда найден победитель, то игра останавливается, и остальные игроки считаются побежденными. 
 //	Выведи для них getName() + ":проиграл"
 
 public class L6_13_10_Threads {
@@ -67,9 +67,48 @@ public class L6_13_10_Threads {
             this.rating = rating;
         }
 
+//        @Override
+//        public void run() {
+//            //Add your code here - добавь код тут
+//        	if(!isInterrupted()) {
+//        		OnlineGame.steps.forEach(x -> {
+//        			if(!isInterrupted()) {
+//        				System.out.println(getName() + ":" + x);
+//        				try {
+//            				Thread.sleep(1000L / rating);
+//            				
+//            			} catch (InterruptedException e) {
+//            				System.out.println(getName() + ":проиграл");
+//            				interrupt();
+//            			}                		
+//        			} else return;
+//            		
+//            	});
+//            	 
+//            	if(!OnlineGame.isWinnerFound) {
+//            		OnlineGame.isWinnerFound = true;
+//                	System.out.println(getName() + ":победитель!");
+//            	}
+//        	}
+//        }
+        
+        //JavaRush answer:
         @Override
         public void run() {
-            //Add your code here - добавь код тут
-        }
+            int i = 0;
+            try {
+                while (i < OnlineGame.steps.size()) {
+                    System.out.println(getName() + ":" + OnlineGame.steps.get(i));
+                    i++;
+                    Thread.sleep(1000 / rating);
+                }
+                if (!OnlineGame.isWinnerFound) {
+                    OnlineGame.isWinnerFound = true;
+                    System.out.println(getName() + ":победитель!");
+                }
+            } catch (InterruptedException e) {
+                System.out.println(getName() + ":проиграл");
+            }
+        }   
     } 
 }
