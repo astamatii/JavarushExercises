@@ -14,7 +14,7 @@ public class L7_6_volatile_1 {
 
     public static class Note {
 
-        public List<String> notes = new ArrayList<String>();
+        public volatile List<String> notes = new ArrayList<String>();
 
         public void addNote(int index, String note) {
             System.out.println("Сейчас будет добавлена заметка [" + note + "] На позицию " + index);

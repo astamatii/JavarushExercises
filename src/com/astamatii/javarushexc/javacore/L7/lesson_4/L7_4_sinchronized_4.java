@@ -15,6 +15,12 @@ public class L7_4_sinchronized_4 {
 class OurPresident {
     private static OurPresident president;
 
+    static {
+    	synchronized(OurPresident.class) {
+    		president = new OurPresident();
+    	}
+    }
+    
     private OurPresident() {
     }
 

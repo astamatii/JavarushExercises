@@ -3,7 +3,7 @@ package com.astamatii.javarushexc.javacore.L7.lesson_6;
 //Не используя synchronized сделай так, чтобы количество сделанных и принятых предложений было одинаковым.
 
 public class L7_6_volatile_2 {
-    public static int proposal = 0;
+    public volatile static int proposal = 0;
 
     public static void main(String[] args) {
         new AcceptProposal().start();

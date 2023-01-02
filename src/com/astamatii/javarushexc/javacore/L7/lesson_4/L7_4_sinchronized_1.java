@@ -10,6 +10,14 @@ import java.util.List;
 public class L7_4_sinchronized_1 {
 
     public static void main(String[] args) {
+    	
+//    	TestThread testThread = new TestThread();
+//    	TestThread testThread2 = new TestThread();
+//    	TestThread testThread3 = new TestThread();
+//    	
+//    	testThread.start();
+//    	testThread2.start();
+//    	testThread3.start();
 
     }
 
@@ -19,14 +27,33 @@ public class L7_4_sinchronized_1 {
 
         public void addNote(int index, String note) {
             System.out.println("Сейчас будет добавлена заметка [" + note + "] На позицию " + index);
-            notes.add(index, note);
+            
+            synchronized(notes) {
+            	notes.add(index, note);
+            }
+            
             System.out.println("Уже добавлена заметка [" + note + "]");
         }
 
         public void removeNote(int index) {
             System.out.println("Сейчас будет удалена заметка с позиции " + index);
-            String note = notes.remove(index);
+            String note;
+            
+            synchronized(notes) {
+            	note = notes.remove(index);
+            }
+            
             System.out.println("Уже удалена заметка [" + note + "] с позиции " + index);
         }
-    } 
+    }
+    
+//    public static class TestThread extends Thread {
+//    	public Note note = new Note();
+//    	
+//    	@Override
+//    	public void run() {
+//    		note.addNote(0, "Hello - " + getName());
+//    		note.removeNote(0);
+//    	}
+//    }
 }
