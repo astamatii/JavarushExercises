@@ -11,23 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 //
 //Подсказка: это одна строчка
 
-public class L7_10_3_Thread {
-
-}
-
-class Dishes {
-    private byte tableNumber;
-
-    public Dishes(byte tableNumber) {
-        this.tableNumber = tableNumber;
-    }
-
-    public byte getTableNumber() {
-        return tableNumber;
-    }
-} 
-
-class Restaurant {
+public class L7_10_3_Thread { //class Restaurant 
     public static List<Thread> threads = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
@@ -47,7 +31,21 @@ class Restaurant {
         Thread.sleep(500);
         waiterTarget.continueWorking = false;
     }
-}  
+}
+
+class Dishes {
+    private byte tableNumber;
+
+    public Dishes(byte tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public byte getTableNumber() {
+        return tableNumber;
+    }
+} 
+
+
 
 class Table {
     private static byte tableNumber;

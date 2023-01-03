@@ -1,8 +1,11 @@
 package com.astamatii.javarushexc.javacore.L7.lesson_10;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 //CRUD - Create, Read, Update, Delete.
 //
@@ -52,6 +55,77 @@ public class L7_10_1_Thread {
 
     public static void main(String[] args) {
         //напишите тут ваш код
+    	Person person = Person.createMale(null, null);
+    	
+    	String male = "м";
+    	String female = "ж";
+    	
+    	SimpleDateFormat formatIn = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+    	SimpleDateFormat formatOut = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+    	
+    	Date date = new Date();
+		
+    	
+    	switch(args[0]) {
+    	case "-c":
+    		try {
+    			date = formatIn.parse(args[3]);
+    		} catch (ParseException e) {
+    			e.printStackTrace();
+    		}
+    		
+    		if (args[2].equals(male))
+    			allPeople.add(person = Person.createMale(args[1], date));
+    		else if (args[2].equals(female))
+    			allPeople.add(person = Person.createFemale(args[1], date));
+    		
+    		System.out.println(allPeople.indexOf(person));
+    		
+    		break;
+    		
+    	case "-r":
+    		person = allPeople.get(Integer.parseInt(args[1]));
+    		
+    		System.out.println(person.getName() + " " + (person.getSex() == Sex.MALE ? male : (person.getSex() == Sex.FEMALE ? female : null) ) + " " + formatOut.format(person.getBirthDate()));
+    		
+    		break;
+    		
+    	case "-u":
+    		
+    		person = allPeople.get(Integer.parseInt(args[1]));
+    		
+    		person.setName(args[2]);
+    		
+    		if (args[3].equals(male))
+    			person.setSex(Sex.MALE);
+    		else if (args[3].equals(female))
+    			person.setSex(Sex.FEMALE);
+    		
+    		try {
+    			date = formatIn.parse(args[4]);
+    		} catch (ParseException e) {
+    			e.printStackTrace();
+    		}
+    		
+    		person.setBirthDate(date);
+    		
+    		break;
+    		
+    	case "-d":
+    		
+    		person = allPeople.get(Integer.parseInt(args[1]));
+    		
+    		person.setName(null);
+    		person.setSex(null);
+    		person.setBirthDate(null);
+    		
+    		break;
+    	}
+    	
+//    	//Verify:
+//    	person = allPeople.get(0);
+//		
+//		System.out.println(person.getName() + " " + (person.getSex() == Sex.MALE ? male : (person.getSex() == Sex.FEMALE ? female : null) ) + " " + formatOut.format(person.getBirthDate()));
     }  
 }
 
