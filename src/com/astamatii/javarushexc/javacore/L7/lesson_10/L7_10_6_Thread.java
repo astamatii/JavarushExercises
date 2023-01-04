@@ -18,23 +18,49 @@ public class L7_10_6_Thread {
     public static boolean isStopped = false;
 
     public static void main(String[] args) throws InterruptedException {
-//        Thread apteka = new Thread(new Apteka(), "Apteka");
-//        Thread man = new Thread(new Person(), "Мужчина");
-//        Thread woman = new Thread(new Person(), "Женщина");
-//
-//        apteka.start();
-//        man.start();
-//        woman.start();
+        Thread apteka = new Thread(new Apteka(), "Apteka");
+        Thread man = new Thread(new Person(), "Мужчина");
+        Thread woman = new Thread(new Person(), "Женщина");
+
+        apteka.start();
+        man.start();
+        woman.start();
 
         Thread.sleep(1000);
         isStopped = true;
     }
 
-    public static class Apteka {
+    public static class Apteka implements Runnable {
+
+		@Override
+		public void run() {
+			while(!isStopped) {
+				drugsController.sell(getRandomDrug(), getRandomCount());
+				
+				try {
+					Thread.sleep(300);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
     }
 
-    public static class Person {
+    public static class Person implements Runnable {
+
+		@Override
+		public void run() {
+			while (!isStopped) {
+				drugsController.buy(getRandomDrug(), getRandomCount());
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
     }
 
@@ -94,7 +120,7 @@ class DrugsController {
         allDrugs.put(placebo, 1);
     }
 
-    public void buy(Drug drug, int count) {
+    public synchronized void buy(Drug drug, int count) {
         String name = Thread.currentThread().getName();
         if (!allDrugs.containsKey(drug)) {
             System.out.println("Нет в наличии");

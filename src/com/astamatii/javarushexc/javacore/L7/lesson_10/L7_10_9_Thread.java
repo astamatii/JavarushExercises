@@ -29,8 +29,10 @@ public class L7_10_9_Thread {
         }
 
         protected Iron takeIron() {
-            System.out.println("Taking the iron");
-            return new Iron();
+        	synchronized(Iron.class) {
+        		System.out.println("Taking the iron");
+                return new Iron();
+        	}            
         }
 
         protected Iron returnIron() {
