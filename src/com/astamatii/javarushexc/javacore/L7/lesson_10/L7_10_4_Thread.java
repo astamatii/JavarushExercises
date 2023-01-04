@@ -131,6 +131,5 @@ public class L7_10_4_Thread implements List<Long> {
 	@Override
 	public synchronized List<Long> subList(int fromIndex, int toIndex) {
 		return original.subList(fromIndex, toIndex);
-	}
-	
+	}	
 }

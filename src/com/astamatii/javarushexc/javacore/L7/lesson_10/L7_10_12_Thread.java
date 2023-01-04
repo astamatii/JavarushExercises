@@ -21,16 +21,38 @@ import java.io.InputStreamReader;
 //Не забудь закрыть потоки.
 
 public class L7_10_12_Thread {
-    public static List<String> allLines = new ArrayList<String>();
-    public static List<String> forRemoveLines = new ArrayList<String>();
+	public static List<String> allLines = new ArrayList<String>();
+	public static List<String> forRemoveLines = new ArrayList<String>();
 
-    public static void main(String[] args) {
-    }
+	public static void main(String[] args) {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			BufferedReader brf1 = new BufferedReader(new FileReader(br.readLine()));
+			BufferedReader brf2 = new BufferedReader(new FileReader(br.readLine()));
+			while (brf1.ready())
+				allLines.add(brf1.readLine());
 
-    public void joinData() throws CorruptedDataException {
+			while (brf2.ready())
+				forRemoveLines.add(brf2.readLine());
 
-    } 
+			brf1.close();
+			brf2.close();
+			br.close();
+			new L7_10_12_Thread().joinData(); //new Solution().joinData();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void joinData() throws CorruptedDataException {		
+		if(allLines.containsAll(forRemoveLines))
+			allLines.removeAll(forRemoveLines);
+		else {
+			allLines.clear();
+			throw new CorruptedDataException();
+		}
+	}
 }
 
 class CorruptedDataException extends IOException {
-}                               
+}

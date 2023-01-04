@@ -22,17 +22,18 @@ public class L7_10_9_Thread {
 
         @Override
         public void run() {
-            Iron iron = takeIron();
-            Clothes clothes = takeClothes();
-            iron(iron, clothes);
-            returnIron();
+        	synchronized(Iron.class) {
+        		Iron iron = takeIron();
+        		Clothes clothes = takeClothes();
+                iron(iron, clothes);
+        	}
+        	returnIron();
+            
         }
 
         protected Iron takeIron() {
-        	synchronized(Iron.class) {
         		System.out.println("Taking the iron");
-                return new Iron();
-        	}            
+                return new Iron();  
         }
 
         protected Iron returnIron() {

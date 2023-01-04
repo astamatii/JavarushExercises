@@ -53,9 +53,12 @@ class Beach implements Comparable<Beach>{
     }
 
 	public synchronized int compareTo(Beach o) {
-		float distance = this.getDistance() - o.getDistance();
+		float distance = o.getDistance() - this.getDistance();
 		int quality = this.getQuality() - o.getQuality();
-		
-		return quality - (int)distance;
+		if((distance >= 0 && quality >= 0) & !(distance == 0 && quality == 0))
+			return 1;
+		else if((distance == 0 && quality == 0) || (distance < 0 && quality > 0) || (distance > 0 && quality < 0))
+			return 0;
+		else return -1;
 	}
 }

@@ -36,87 +36,96 @@ import java.util.Locale;
 //Миронова ж 25-Apr-1997
 
 public class L7_10_2_Thread {
-    public static volatile List<Person> allPeople = new ArrayList<Person>();
+	public static volatile List<Person> allPeople = new ArrayList<Person>();
 
-    static {
-        allPeople.add(Person.createMale("Иванов Иван", new Date()));  //сегодня родился    id=0
-        allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
-    }
+	static {
+		allPeople.add(Person.createMale("Иванов Иван", new Date())); // сегодня родился id=0
+		allPeople.add(Person.createMale("Петров Петр", new Date())); // сегодня родился id=1
+	}
 
-    public synchronized static  void main(String[] args) {
-        //start here - начни тут
-    	Person person = Person.createMale(null, null);
-    	
-    	String male = "м";
-    	String female = "ж";
-    	
-    	SimpleDateFormat formatIn = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-    	SimpleDateFormat formatOut = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-    	
-    	Date date = new Date();
-    	
-    	switch(args[0]) {
-    	case "-c":
-    		for (int i = 0; i < args.length - 1; i += 3) {
-    			try {
-        			date = formatIn.parse(args[3 + i]);
-        		} catch (ParseException e) {
-        			e.printStackTrace();
-        		}
-        		
-        		if (args[2 + i].equals(male))
-        			allPeople.add(person = Person.createMale(args[1 + i], date));
-        		else if (args[2 + i].equals(female))
-        			allPeople.add(person = Person.createFemale(args[1 + i], date));
-        		
-        		System.out.println(allPeople.indexOf(person));
-    		}    		
-    		
-    		break;
-    		
-    	case "-u":
-    		
-    		for (int i = 0; i < args.length - 1; i += 4) {
-    			person = allPeople.get(Integer.parseInt(args[1 + i]));
-        		
-        		person.setName(args[2 + i]);
-        		
-        		if (args[3 + i].equals(male))
-        			person.setSex(Sex.MALE);
-        		else if (args[3 + i].equals(female))
-        			person.setSex(Sex.FEMALE);
-        		
-        		try {
-        			date = formatIn.parse(args[4 + i]);
-        		} catch (ParseException e) {
-        			e.printStackTrace();
-        		}
-        		
-        		person.setBirthDate(date);
-    		}    		
-    		
-    		break;
-    		
-    	case "-d":
-    		for (int i = 0; i < args.length - 1; i++) {
-    			person = allPeople.get(Integer.parseInt(args[1 + i]));
-        		
-        		person.setName(null);
-        		person.setSex(null);
-        		person.setBirthDate(null);
-    		}
-    		
-    		break;
-    		
-    	case "-i":
-    		for (int i = 0; i < args.length - 1; i++) {
-    			person = allPeople.get(Integer.parseInt(args[i + 1]));        		
-        		System.out.println(person.getName() + " " + (person.getSex() == Sex.MALE ? male : (person.getSex() == Sex.FEMALE ? female : null) ) + " " + formatOut.format(person.getBirthDate()));
-    		}
-    		
-    		break;    		
-    	}    	
-    	   	
+	public static void main(String[] args) {
+		// start here - начни тут
+		Person person = Person.createMale(null, null);
+
+		String male = "м";
+		String female = "ж";
+
+		SimpleDateFormat formatIn = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+		SimpleDateFormat formatOut = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+
+		Date date = new Date();
+
+		switch (args[0]) {
+		case "-c":
+			synchronized (allPeople) {
+				for (int i = 0; i < args.length - 1; i += 3) {
+					try {
+						date = formatIn.parse(args[3 + i]);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+
+					if (args[2 + i].equals(male))
+						allPeople.add(person = Person.createMale(args[1 + i], date));
+					else if (args[2 + i].equals(female))
+						allPeople.add(person = Person.createFemale(args[1 + i], date));
+
+					System.out.println(allPeople.indexOf(person));
+				}
+			}
+
+			break;
+
+		case "-u":
+			synchronized (allPeople) {
+				for (int i = 0; i < args.length - 1; i += 4) {
+					person = allPeople.get(Integer.parseInt(args[1 + i]));
+
+					person.setName(args[2 + i]);
+
+					if (args[3 + i].equals(male))
+						person.setSex(Sex.MALE);
+					else if (args[3 + i].equals(female))
+						person.setSex(Sex.FEMALE);
+
+					try {
+						date = formatIn.parse(args[4 + i]);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+
+					person.setBirthDate(date);
+				}
+			}
+
+			break;
+
+		case "-d":
+			synchronized (allPeople) {
+				for (int i = 0; i < args.length - 1; i++) {
+					person = allPeople.get(Integer.parseInt(args[1 + i]));
+
+					person.setName(null);
+					person.setSex(null);
+					person.setBirthDate(null);
+				}
+			}
+
+			break;
+
+		case "-i":
+			synchronized (allPeople) {
+				for (int i = 0; i < args.length - 1; i++) {
+					person = allPeople.get(Integer.parseInt(args[i + 1]));
+					System.out.println(person.getName() + " "
+							+ (person.getSex() == Sex.MALE ? male : (person.getSex() == Sex.FEMALE ? female : null))
+							+ " " + formatOut.format(person.getBirthDate()));
+				}
+			}
+
+			break;
+		}
+
 //    	//Verify: (PS: Infinite execution)
 //    	System.out.println();
 //    	Thread thread1 = new Thread() {
@@ -135,8 +144,8 @@ public class L7_10_2_Thread {
 //    	
 //    	thread1.start();
 //    	thread2.start();
-    	
-    }
+
+	}
 }
 
 //These classes are already in L7_10_1_Thread.java

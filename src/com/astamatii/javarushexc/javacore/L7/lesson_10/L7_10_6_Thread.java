@@ -37,11 +37,9 @@ public class L7_10_6_Thread {
 			while(!isStopped) {
 				drugsController.sell(getRandomDrug(), getRandomCount());
 				
-				try {
-					Thread.sleep(300);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				waitAMoment();
+				waitAMoment();
+				waitAMoment();
 			}
 		}
 
@@ -54,11 +52,7 @@ public class L7_10_6_Thread {
 			while (!isStopped) {
 				drugsController.buy(getRandomDrug(), getRandomCount());
 				
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				waitAMoment();
 			}
 		}
 
@@ -134,7 +128,7 @@ class DrugsController {
         }
     }
 
-    public void sell(Drug drug, int count) {
+    public synchronized void sell(Drug drug, int count) {
         System.out.println(Thread.currentThread().getName() + " Закупка " + drug.getName() + " " + count);
         if (!allDrugs.containsKey(drug)) {
             allDrugs.put(drug, 0);
