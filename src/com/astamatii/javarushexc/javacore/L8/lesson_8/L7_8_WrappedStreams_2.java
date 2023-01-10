@@ -5,8 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.astamatii.javarushexc.javacore.L8.lesson_8.L7_8_WrappedStreams_3.AmigoOutputStream;
-
 //Используя шаблон проектирования Wrapper (Decorator) расширь функциональность AmigoOutputStream.
 //В классе QuestionFileOutputStream при вызове метода close() должна быть реализована следующая функциональность:
 //	1. Вывести в консоль фразу "Вы действительно хотите закрыть поток? Д/Н".
