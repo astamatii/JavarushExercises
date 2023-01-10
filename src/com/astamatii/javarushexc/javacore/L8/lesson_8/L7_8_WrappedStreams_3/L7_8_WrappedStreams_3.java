@@ -1,4 +1,4 @@
-package com.astamatii.javarushexc.javacore.L8.lesson_8;
+package com.astamatii.javarushexc.javacore.L8.lesson_8.L7_8_WrappedStreams_3;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,10 +14,21 @@ public class L7_8_WrappedStreams_3 {
 
 }
 
-//class AmigoOutputStream {
-//    public static String fileName = "C:/tmp/result.txt";
-//
-//    public static void main(String[] args) throws FileNotFoundException {
-//        new AmigoOutputStream(new FileOutputStream(fileName));
-//    }    
-//}
+class AmigoOutputStream extends FileOutputStream {
+    public static String fileName = "C:/tmp/result.txt";
+    
+    AmigoOutputStream(FileOutputStream fileOutputStream) throws IOException {
+    	super(fileOutputStream.getFD());
+    }
+    
+    @Override
+    public void close() throws IOException {
+    	super.flush();
+    	super.write("JavaRush © All rights reserved.".getBytes());
+    	super.close();
+    }    
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        new AmigoOutputStream(new FileOutputStream(fileName));
+    }    
+}

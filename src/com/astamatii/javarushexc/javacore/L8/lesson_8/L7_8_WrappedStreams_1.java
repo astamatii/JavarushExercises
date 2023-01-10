@@ -9,7 +9,7 @@ package com.astamatii.javarushexc.javacore.L8.lesson_8;
 
 public class L7_8_WrappedStreams_1 {
     public static void main(String[] args) {
-//        new Thread(new DecoratorRunnableImpl(new DecoratorMyRunnableImpl(new RunnableImpl()))).start();
+        new Thread(new DecoratorRunnableImpl(new DecoratorMyRunnableImpl(new RunnableImpl()))).start();
     }
 
     public static class RunnableImpl implements Runnable {
@@ -32,4 +32,21 @@ public class L7_8_WrappedStreams_1 {
             component.run();
         }
     } 
+    
+    public static class DecoratorMyRunnableImpl implements Runnable {
+        private Runnable component;
+
+        public DecoratorMyRunnableImpl(Runnable component) {
+            this.component = component;
+        }
+
+    	
+    	@Override
+        public void run() {
+            System.out.println("DecoratorMyRunnableImpl body");
+            component.run();
+        }
+    	
+    }
 }
+

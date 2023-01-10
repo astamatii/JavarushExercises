@@ -20,5 +20,14 @@ import java.util.TreeSet;
 
 public class L7_3_FileInputOutputStream_5 {
     public static void main(String[] args) throws Exception {
+    	FileInputStream fileStream = new FileInputStream(new BufferedReader(new InputStreamReader(System.in)).readLine());
+    	
+    	Set<Integer> fileSet = new TreeSet<>();
+    	
+    	while(fileStream.available() > 0) {
+    		fileSet.add(fileStream.read());
+    	}
+    	
+    	fileSet.forEach(x -> System.out.print(x + " "));
     }  
 }

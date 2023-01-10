@@ -10,5 +10,19 @@ import java.io.InputStreamReader;
 
 public class L7_3_FileInputOutputStream_2 {
 	public static void main(String[] args) throws Exception {
+		FileInputStream fileStream = new FileInputStream(new BufferedReader(new InputStreamReader(System.in)).readLine());
+		
+		int min = 0xFFFF;
+		
+		while(fileStream.available() > 0) {
+			int current = fileStream.read();
+			
+			if(current < min)
+				min = current;
+		}
+		
+		System.out.println(min);
+		
+		fileStream.close();
     }
 }
