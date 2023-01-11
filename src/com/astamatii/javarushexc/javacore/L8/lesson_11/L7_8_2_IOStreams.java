@@ -34,25 +34,33 @@ import java.util.Arrays;
 //19847983Куртка для сноубордистов, разм10173.991234
 
 public class L7_8_2_IOStreams {
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 //    	String productName = args[1];
 //    	String price = args[2];
 //    	String quantity = args[3];
-    	int id = 0;
-    	
+		StringBuilder id = new StringBuilder(3);
+//    	
 //    	String fileName = new BufferedReader(new InputStreamReader(System.in)).readLine();   
 //    	FileWriter fileWriter = new FileWriter(fileName);
 //    	BufferedReader fileReader = new BufferedReader (new FileReader(fileName));    	
-    	
-    	List<String> record = new ArrayList<>();
-    	String lastLine, line;
-    	    	
-    	lastLine = "19846   Шорты пляжные синие           159.00  12  ";
-		if(lastLine != null)
-			record = Arrays.asList(lastLine.split(" ", -1)); 
+
+		List<StringBuilder> record = new ArrayList<>();
+		String lastLine, line;
+		StringBuilder str = new StringBuilder();
+
+		lastLine = "19846   Шорты пляжные синие           159.00  12  ";
+		if (lastLine != null) {
+			id.append(Integer.parseInt(lastLine.split(" ")[0]) + 1);
+			id.append("        ".substring(id.length())).setLength(8);
+		} else
+			id.append(0);
+
+		System.out.println(id);// + " ".substring(id.length()));
+
+		System.out.println(Arrays.stream(id.toString().split("")).filter(x -> x.equals(" ")).count());
+
+		System.out.println(String.format("%1$" + 8 + "s", 123456789));
 		
-		record.forEach(System.out::println);
-    	
 //    	switch (args[0]) {
 //    	case "-c":
 //    		fileWriter.write("");
@@ -60,14 +68,17 @@ public class L7_8_2_IOStreams {
 //    		while((line = fileReader.readLine()) != null) {
 //        		lastLine = line;
 //        	}
-//    		lastLine = "19846   Шорты пляжные синие           159.00  12  ";
-//    		if(lastLine != null)
-//    			record = Arrays.asList(lastLine.split(" ")); 
 //    		
-//    		record.forEach(System.out::println);
+//    		if(lastLine != null) {
+//    			id = Integer.parseInt(lastLine.split(" ")[0]) + 1;
+//    		} else id = 0;
+//    		
+//    		
+//    		
+//    		
 //    		
 //    		break;
 //    	}
-    	
-    } 
+
+	}
 }
