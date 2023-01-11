@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 //CRUD для таблицы внутри файла.
 //Напиши программу, которая считывает с консоли путь к файлу для операций CRUD 
@@ -34,5 +35,39 @@ import java.util.List;
 
 public class L7_8_2_IOStreams {
     public static void main(String[] args) throws Exception {
+//    	String productName = args[1];
+//    	String price = args[2];
+//    	String quantity = args[3];
+    	int id = 0;
+    	
+//    	String fileName = new BufferedReader(new InputStreamReader(System.in)).readLine();   
+//    	FileWriter fileWriter = new FileWriter(fileName);
+//    	BufferedReader fileReader = new BufferedReader (new FileReader(fileName));    	
+    	
+    	List<String> record = new ArrayList<>();
+    	String lastLine, line;
+    	    	
+    	lastLine = "19846   Шорты пляжные синие           159.00  12  ";
+		if(lastLine != null)
+			record = Arrays.asList(lastLine.split(" ", -1)); 
+		
+		record.forEach(System.out::println);
+    	
+//    	switch (args[0]) {
+//    	case "-c":
+//    		fileWriter.write("");
+//    		lastLine = null;
+//    		while((line = fileReader.readLine()) != null) {
+//        		lastLine = line;
+//        	}
+//    		lastLine = "19846   Шорты пляжные синие           159.00  12  ";
+//    		if(lastLine != null)
+//    			record = Arrays.asList(lastLine.split(" ")); 
+//    		
+//    		record.forEach(System.out::println);
+//    		
+//    		break;
+//    	}
+    	
     } 
 }

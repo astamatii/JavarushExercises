@@ -17,7 +17,28 @@ import java.io.IOException;
 //-d - ключ указывает, что необходимо расшифровать данные.
 
 public class L7_8_1_IOStreams {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+    	String fileName = args[1];
+    	String fileOutputName = args[2];
+    	
+    	FileInputStream fileInput = new FileInputStream(fileName);
+    	FileOutputStream fileOutputStream = new FileOutputStream(fileOutputName);
+    	
+    	byte[] buffer = new byte[100];
+    	switch (args[0]) {
+    	case "-d": //crypt
+    		while(fileInput.available() > 0) {
+    			int count = fileInput.read(buffer);
+    			fileOutputStream.write(buffer, 0, count);    			
+    		}
+    		
+    		break;
+    	case "-e": //decrypt
+    		while(fileInput.available() > 0) {
+    			int count = fileInput.read(buffer);
+    			fileOutputStream.write(buffer, 0, count);    			
+    		}
+    		break;
+    	}
     }          
 }
