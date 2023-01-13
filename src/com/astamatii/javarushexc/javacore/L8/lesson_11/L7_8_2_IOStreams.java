@@ -60,9 +60,11 @@ public class L7_8_2_IOStreams {
 		String quantity;
 		String id;		
 		List<String> records;
+		int idNum;
 		
 		BufferedReader reader;
 		BufferedWriter writer;
+		String fileName;
 		
 		String args0 = null;
 				
@@ -75,7 +77,7 @@ public class L7_8_2_IOStreams {
 		case "-c":
 			//Reading the filename from console
 			reader = new BufferedReader(new InputStreamReader(System.in));
-			String fileName = reader.readLine();
+			fileName = reader.readLine();
 			reader.close();	
 			
 			//Create new file if it`s needed:
@@ -95,9 +97,10 @@ public class L7_8_2_IOStreams {
 			
 			//Creating new record
 			if (!records.isEmpty()) {
-				id = strFormat(String.valueOf(Integer.parseInt(records.get(records.size() - 1).split(" ")[0]) + 1), 8);
+				idNum = Integer.parseInt(records.get(records.size() - 1).substring(0, 9).split(" ")[0]) + 1;
+				id = strFormat(String.valueOf(idNum), 8);
 			} else
-				id = strFormat("1", 8);
+				id = strFormat("0", 8);
 
 			productName = strFormat(args[1], 30);
 			price = strFormat(args[2], 8);

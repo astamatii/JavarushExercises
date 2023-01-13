@@ -1,6 +1,8 @@
 package com.astamatii.javarushexc.javacore.L8.lesson_11;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
@@ -37,7 +39,175 @@ import java.util.List;
 //19847983Куртка для сноубордистов, разм10173.991234
 
 public class L7_8_3_IOStreams {
-    public static void main(String[] args) {
+	
+	// Modify padding and length using StringBuilder:
+	public static void stringBuilder(StringBuilder sb, int n) {
+		StringBuilder str = new StringBuilder();
+		for (int i = 0; i < sb.length(); i++) {
+			str.append(" ");
+		}
 
-    }  
+		sb.append(str.substring(sb.length())).setLength(n);
+	}
+
+	// Modify padding and length using String:
+	public static String strFormat(String str, int n) {
+		return String.format("%-" + n + "s", str).substring(0, n);
+	}
+
+	public static void main(String[] args) throws Exception {
+		String productName;
+		String price;
+		String quantity;
+		String id;		
+		List<String> records;
+		int num = 0;
+		boolean found = false;
+		
+		BufferedReader reader;
+		BufferedWriter writer;
+		String fileName;
+		
+		String args0 = null;
+				
+		try {
+			args0 = args[0];
+		} catch (Exception e) {
+		}
+		
+		switch (args0) {
+		case "-c":
+			//Reading the filename from console
+			reader = new BufferedReader(new InputStreamReader(System.in));
+			fileName = reader.readLine();
+			reader.close();	
+			
+			//Create new file if it`s needed:
+			try {
+				reader = new BufferedReader(new FileReader(fileName));
+			} catch (FileNotFoundException e) {
+				new FileWriter(fileName).close();
+				reader = new BufferedReader(new FileReader(fileName));
+			}
+			
+			//Loading all records from file if it has:
+			records = new ArrayList<>();
+			while (reader.ready()) {
+				records.add(reader.readLine());
+			}
+			reader.close();
+			
+			//Creating new record
+			if (!records.isEmpty()) {
+				id = strFormat(String.valueOf(Integer.parseInt(records.get(records.size() - 1).substring(0, 9).split(" ")[0]) + 1), 8);
+			} else
+				id = strFormat("0", 8);
+
+			productName = strFormat(args[1], 30);
+			price = strFormat(args[2], 8);
+			quantity = strFormat(args[3], 4);
+		
+			records.add(id + productName + price + quantity);
+			
+			//Writing all records with new one, into the file:
+			writer = new BufferedWriter(new FileWriter(fileName));
+			for(String record : records)
+				writer.write("\n" + record);
+			
+			writer.close();
+			break;
+
+		case "-u":
+			//Reading the filename from console
+			reader = new BufferedReader(new InputStreamReader(System.in));
+			fileName = reader.readLine();
+			reader.close();	
+			
+			//Create new file if it`s needed:
+			try {
+				reader = new BufferedReader(new FileReader(fileName));
+			} catch (FileNotFoundException e) {
+				new FileWriter(fileName).close();
+				reader = new BufferedReader(new FileReader(fileName));
+			}
+			
+			found = false;
+			
+			//Loading all records from file if it has:
+			records = new ArrayList<>();
+			while (reader.ready()) {
+				records.add(reader.readLine());
+				if(args[1].equals(records.get(records.size() - 1).substring(0, 9).split(" ")[0])) {
+					num = records.size() - 1;
+					found = true;
+				}
+			}
+			reader.close();
+						
+			//Updating current record
+			if (found) {
+				id = strFormat(args[1], 8);
+				productName = strFormat(args[2], 30);
+				price = strFormat(args[3], 8);
+				quantity = strFormat(args[4], 4);
+				records.set(num, id + productName + price + quantity);
+				
+				//Writing all records with new one, into the file:
+				writer = new BufferedWriter(new FileWriter(fileName));
+				for(String record : records)
+					writer.write("\n" + record);
+				
+				writer.close();				
+			} else
+				System.out.println("There is no such record");
+			
+			break;
+			
+		case "-d":
+			//Reading the filename from console
+			reader = new BufferedReader(new InputStreamReader(System.in));
+			fileName = reader.readLine();
+			reader.close();	
+			
+			//Create new file if it`s needed:
+			try {
+				reader = new BufferedReader(new FileReader(fileName));
+			} catch (FileNotFoundException e) {
+				new FileWriter(fileName).close();
+				reader = new BufferedReader(new FileReader(fileName));
+			}
+			
+			found = false;
+			
+			//Loading all records from file if it has:
+			records = new ArrayList<>();
+			while (reader.ready()) {
+				records.add(reader.readLine());
+				if(args[1].equals(records.get(records.size() - 1).substring(0, 9).split(" ")[0])) {
+					num = records.size() - 1;
+					found = true;
+				}
+			}
+			reader.close();
+						
+			//Updating current record
+			if (found) {
+				records.remove(num);
+				
+				//Writing all records with new one, into the file:
+				writer = new BufferedWriter(new FileWriter(fileName));
+				for(String record : records)
+					writer.write("\n" + record);
+				
+				writer.close();				
+			} else
+				System.out.println("There is no such record");
+			
+			break;
+			
+		default:
+			break;
+		}
+
+	} 
 }
