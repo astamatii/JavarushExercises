@@ -17,20 +17,22 @@ import java.util.Set;
 public class L7_8_4_IOStreams {
 	public static void main(String[] args) {
 		String args0;
+		int count = 0;
+		
 		try {
 			args0 = args[0];
 			FileReader fileReader;
 			Set<Character> letters = new HashSet<>();
 			for (char i = 'a'; i <= 'z'; i++) {
 				letters.add(i);
-			}
-			int count = 0;
+			}			 
 			
-			char[] buffer = new char[3];
+			char[] buffer;
 			
 			try {
 				fileReader = new FileReader(args0);
 				while(fileReader.ready()) {
+					buffer = new char[12];
 					fileReader.read(buffer);
 					for(Character c : letters) {
 						for( int i = 0; i < buffer.length; i++)
@@ -45,7 +47,5 @@ public class L7_8_4_IOStreams {
 			System.out.println(count);
 		} catch (Exception e) {
 		}
-		
-		
     }
 }
