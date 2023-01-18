@@ -2,6 +2,11 @@ package com.astamatii.javarushexc.javacore.L8.lesson_11;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 //Программа запускается с одним параметром - именем файла, который содержит английский текст.
 //Посчитать частоту встречания каждого символа.
@@ -22,6 +27,44 @@ import java.io.IOException;
 
 public class L7_8_9_IOStreams {
     public static void main(String[] args) {
+    	String args0;
 
+		try {
+			args0 = args[0];
+			FileReader fileReader;
+			List<Character> simbols = new ArrayList<>();
+			Map<Character, Integer> result = new HashMap<>();
+			
+			char[] buffer;
+
+			try {
+				fileReader = new FileReader(args0);
+				while (fileReader.ready()) {
+					buffer = new char[12];
+					int length = fileReader.read(buffer);
+					for (int i = 0; i < length; i++) {
+						simbols.add(buffer[i]);
+					}
+				}
+				fileReader.close();				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			for (char i = 0; i < 256; i++) {
+				int count = 0;
+				for(char c : simbols) {
+					if(c == i) count++;
+				}
+				
+				if (count != 0)
+					result.put(i, count);
+			}
+			
+			result.forEach((c, i) -> System.out.println(c + " " + i));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 }
