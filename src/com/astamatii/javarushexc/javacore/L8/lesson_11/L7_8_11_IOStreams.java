@@ -5,9 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 //Читайте с консоли имена файлов, пока не будет введено слово "exit".
@@ -37,6 +36,11 @@ public class L7_8_11_IOStreams {
 			e.printStackTrace();
 		}
     	
+    	//printing values
+//    	for(var m : resultMap.entrySet()) {
+//    		System.out.println(m.getKey() + " = " + m.getValue());
+//    	}
+    	
     }
 
     public static class ReadThread extends Thread {
@@ -52,16 +56,22 @@ public class L7_8_11_IOStreams {
     	@Override
     	public void run() {
     		
-    		List<Byte> bytes = new ArrayList<>();
-    		
-    		try(FileInputStream fileStream = new FileInputStream(fileName)){
+    		HashMap<Byte, Integer> bytes = new HashMap<>();
+    		    		
+			try (FileInputStream fileStream = new FileInputStream(fileName)) {
     			byte[] buffer = new byte[10];
     			while(fileStream.available() > 0) {
     				int length = fileStream.read(buffer);
     				
     				for (int i = 0; i < length; i++)
-    					bytes.add(buffer[i]);
+    					bytes.put(buffer[i], bytes.get(buffer[i]) == null ? 0 : bytes.get(buffer[i]) + 1);
     			}    			
+    			
+    			int minCount = Collections.max(bytes.values());
+    			
+    			byte best = bytes.keySet().stream().filter(x -> bytes.get(x) == minCount).min((x,y) -> x - y).get();
+    			
+    			resultMap.put(fileName, (int)best);
     			
     			fileStream.close();
     		} catch (FileNotFoundException e) {
@@ -69,6 +79,7 @@ public class L7_8_11_IOStreams {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+    		
     		
     	}
     	

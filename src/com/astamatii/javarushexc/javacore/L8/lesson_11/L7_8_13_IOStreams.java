@@ -3,7 +3,7 @@ package com.astamatii.javarushexc.javacore.L8.lesson_11;
 import java.io.*;
 import java.util.Comparator;
 import java.util.Set;
-import java.util.TreeSet; 
+import java.util.TreeSet;
 
 //Собираем файл из кусочков.
 //Считывать с консоли имена файлов.
@@ -23,5 +23,17 @@ import java.util.TreeSet;
 
 public class L7_8_13_IOStreams {
     public static void main(String[] args) {
+    	BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+    	String fileName;
+    	
+    	try {
+			while(!(fileName = console.readLine()).equals("end")) {
+				
+			}
+			
+			console.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }    
 }

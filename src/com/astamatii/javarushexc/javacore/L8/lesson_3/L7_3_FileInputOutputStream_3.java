@@ -21,11 +21,23 @@ public class L7_3_FileInputOutputStream_3 {
 		
 		
 		while(fileStream.available() > 0) {
-			fileArray.add(fileStream.read());
+			//method III best of the best
+			int fileByte = fileStream.read();
+			fileMap.put(fileByte, fileMap.get(fileByte) == null ? 0 : fileMap.get(fileByte) + 1l);
+			
+			//for method I and II
+//			fileArray.add(fileStream.read());
 		}				
 		
+		//method I
+//		for (Integer i : fileArray) {
+//			fileMap.put(i, fileArray.stream().filter(x -> x == i).count());
+//		}
+		
+		//method II : much faster
+		
 		for (Integer i : fileArray) {
-			fileMap.put(i, fileArray.stream().filter(x -> x == i).count());
+			fileMap.put(i, fileMap.get(i) == null ? 0 : fileMap.get(i) + 1l);
 		}
 		
 		Long max = Collections.max(fileMap.values());
