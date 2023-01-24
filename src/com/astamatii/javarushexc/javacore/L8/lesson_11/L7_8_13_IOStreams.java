@@ -25,15 +25,29 @@ public class L7_8_13_IOStreams {
     public static void main(String[] args) {
     	BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
     	String fileName;
+    	TreeSet<String> fileNames = new TreeSet<>((s1, s2) -> {
+    		String[] sArr1 = s1.split("\\.");
+    		String[] sArr2 = s2.split("\\.");
+    		String part1 = sArr1[sArr1.length - 1];
+    		String part2 = sArr2[sArr2.length - 1];
+//    		if(part1.startsWith("part") && part2.startsWith("part"))
+    			return part1.compareTo(part2);
+//    		if(part1.startsWith("part") && !part2.startsWith("part"))
+//    			return 1;
+//    		if(!part1.startsWith("part") && !part2.startsWith("part"))
+//    			return 0;
+//    		if(!part1.startsWith("part") && part2.startsWith("part"))
+//    			return -1;
+    	});  	
     	
     	try {
 			while(!(fileName = console.readLine()).equals("end")) {
-				
+				fileNames.add(fileName);
 			}
 			
 			console.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }    
+    }
 }
