@@ -2,7 +2,6 @@ package com.astamatii.javarushexc.javacore.L8.lesson_8;
 
 import java.io.IOException;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 //Используя шаблон проектирования Wrapper (Decorator) расширь функциональность AmigoOutputStream.
@@ -20,9 +19,10 @@ public class L7_8_WrappedStreams_2 {
 class QuestionFileOutputStream implements AmigoOutputStream {
 
 	AmigoOutputStream amigo;
+	BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
 	
-	QuestionFileOutputStream(){
-		amigo = new QuestionFileOutputStream();
+	QuestionFileOutputStream(AmigoOutputStream outputStream){
+		amigo = outputStream;
 	}
 	
 	@Override
@@ -49,7 +49,7 @@ class QuestionFileOutputStream implements AmigoOutputStream {
 	public void close() throws IOException {
 		System.out.println("Вы действительно хотите закрыть поток? Д/Н");
 		
-		if("Д".equals(new BufferedReader(new InputStreamReader(System.in)).readLine())) 
+		if("Д".equals(reader.readLine())) 
 			amigo.close();		
 	}
 

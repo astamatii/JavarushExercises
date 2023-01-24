@@ -25,7 +25,6 @@ public class L7_5_InputOutputStream_2 {
 					count++;
 			}
 
-			fileStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

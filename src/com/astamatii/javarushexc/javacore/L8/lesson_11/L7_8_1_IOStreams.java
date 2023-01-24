@@ -26,19 +26,25 @@ public class L7_8_1_IOStreams {
     	
     	byte[] buffer = new byte[100];
     	switch (args[0]) {
-    	case "-d": //crypt
+    	case "-e": //crypt
     		while(fileInput.available() > 0) {
     			int count = fileInput.read(buffer);
+    			for (int i = 0; i < buffer.length; i++)
+    				buffer[i] += 1;
     			fileOutputStream.write(buffer, 0, count);    			
     		}
     		
     		break;
-    	case "-e": //decrypt
+    	case "-d": //decrypt
     		while(fileInput.available() > 0) {
     			int count = fileInput.read(buffer);
+    			for (int i = 0; i < buffer.length; i++)
+    				buffer[i] -= 1;
     			fileOutputStream.write(buffer, 0, count);    			
     		}
     		break;
     	}
+    	fileInput.close();
+    	fileOutputStream.close();
     }          
 }

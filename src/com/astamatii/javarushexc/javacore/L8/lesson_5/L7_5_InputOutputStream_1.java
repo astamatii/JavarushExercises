@@ -27,6 +27,6 @@ public class L7_5_InputOutputStream_1 {
         }
 
         inputStream.close(); 	//inputStream.reset(); //3
-        outputStream.close (); 	//outputStream.flush(); //4
+        outputStream.close(); 	//outputStream.flush(); //4
     }
 }

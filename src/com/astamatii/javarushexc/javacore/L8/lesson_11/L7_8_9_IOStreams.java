@@ -3,7 +3,6 @@ package com.astamatii.javarushexc.javacore.L8.lesson_11;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,5 +65,18 @@ public class L7_8_9_IOStreams {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		//Javarush answer:
+//		int[] aSCII = new int[128];
+//        try (FileReader reader = new FileReader(args[0])) {
+//            while (reader.ready()) {
+//                aSCII[reader.read()]++;
+//            }
+//        }
+//        for (int i = 0; i < aSCII.length; i++) {
+//            if (aSCII[i] != 0) {
+//                System.out.println((char) i + " " + aSCII[i]);
+//            }
+//        }
     }
 }

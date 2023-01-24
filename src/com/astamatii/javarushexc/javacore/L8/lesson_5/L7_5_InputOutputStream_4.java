@@ -30,8 +30,6 @@ public class L7_5_InputOutputStream_4 {
     		for (Integer i : fileList)
 				fileStream2.write(i);
     				
-			fileStream1.close();
-			fileStream2.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

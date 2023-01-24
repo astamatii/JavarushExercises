@@ -31,9 +31,6 @@ public class L7_5_InputOutputStream_3 {
 				fileStream3.write(buffer, 0, count);
 			}
 			
-			fileStream1.close();
-			fileStream2.close();
-			fileStream3.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

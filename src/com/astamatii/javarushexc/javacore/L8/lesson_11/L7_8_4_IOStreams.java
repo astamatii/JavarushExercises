@@ -1,11 +1,7 @@
 package com.astamatii.javarushexc.javacore.L8.lesson_11;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.CharBuffer;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +19,7 @@ public class L7_8_4_IOStreams {
 			args0 = args[0];
 			FileReader fileReader;
 			Set<Character> letters = new HashSet<>();
-			for (char i = 'a'; i <= 'z'; i++) {
+			for (char i = 'A'; i <= 'z'; i++) {
 				letters.add(i);
 			}			 
 			

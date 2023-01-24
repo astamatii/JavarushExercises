@@ -28,6 +28,8 @@ public class L7_3_FileInputOutputStream_5 {
     		fileSet.add(fileStream.read());
     	}
     	
+    	fileStream.close();
+    	
     	fileSet.forEach(x -> System.out.print(x + " "));
     }  
 }

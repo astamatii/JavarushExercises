@@ -19,7 +19,6 @@ public class L7_5_InputOutputStream_5 {
 					new BufferedReader(new InputStreamReader(System.in)).readLine())) {
 
 				if (fileStream.available() < 1000) {
-					fileStream.close();
 					throw new DownloadException();
 				}					
 			} catch (IOException e) {
